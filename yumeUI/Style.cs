@@ -10,7 +10,8 @@ namespace yumeUI
 {
     public struct Style
     {
-        public Style(int Padding = 0, int Border = 0, Color? BorderColor = default(Color?), Color? BackGroundColor = default(Color?), Color? MainColor = default(Color?))
+        public Style(int Padding = 0, int Border = 0, Color? BorderColor = default(Color?),
+            Color? BackGroundColor = default(Color?), Color? MainColor = default(Color?))
         {
             padding = Padding;
             border = Border;
@@ -35,7 +36,7 @@ namespace yumeUI
         {
             //Turns this Style into the style specified by the string.
 
-            List<string> list = styleString.Split(';').ToList();
+            List<string> list = styleString.Split(new char[]{ ';' },StringSplitOptions.RemoveEmptyEntries).ToList();
             foreach (string item in list)
             {
                 string text = item.Split(':')[0];
@@ -80,11 +81,11 @@ namespace yumeUI
             }
             if (borderColor != Color.Transparent)
             {
-                stringBuilder.Append("border-color:" + borderColor.ToString() + ";");
+                stringBuilder.Append("border-color:" + borderColor.HexColor() + ";");
             }
             if (backgroundColor != Color.Transparent)
             {
-                stringBuilder.Append("background-color:" + backgroundColor.ToString() + ";");
+                stringBuilder.Append("background-color:" + backgroundColor.HexColor() + ";");
             }
             if (mainColor != Color.White)
             {

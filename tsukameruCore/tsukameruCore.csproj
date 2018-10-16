@@ -49,5 +49,15 @@
     <Compile Include="TsukameruGame.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\yumeTakusan\yumeTakusan.csproj">
+      <Project>{241924ab-14cb-4fb3-9701-1deb15c418e0}</Project>
+      <Name>yumeTakusan</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\yumeUI\yumeUI.csproj">
+      <Project>{8cd93d57-3eeb-45ec-b6c3-bd789a3864e1}</Project>
+      <Name>yumeUI</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

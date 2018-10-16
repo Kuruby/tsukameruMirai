@@ -10,12 +10,13 @@ using System.IO;
 namespace yumeUI
 {
     [XmlRoot("root")]
-    class RootNode
+    public class RootNode
     {
         [XmlElement]
         public ElementNode node;
 
-        private Style style;
+        [XmlAttribute("style")]
+        private Style style = new Style(5);
 
         [XmlAttribute("style")]
         public string styleString
@@ -32,10 +33,7 @@ namespace yumeUI
 
         public RootNode()
         {
-            node = new ElementNode();
-            style = default(Style);
-            style.padding = 5;
-            style.mainColor = Color.Cyan;
+            node = new ElementNode(style);
         }
 
         public string Serialize()
@@ -45,6 +43,7 @@ namespace yumeUI
             xmlSerializer.Serialize(stringWriter, this);
             return stringWriter.ToString();
         }
+
 
         public static RootNode DeSerialize(string xml)
         {

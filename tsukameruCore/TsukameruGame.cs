@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using yumeUI;
+using yumeTakusan;
 
 namespace tsukameruCore
 {
@@ -8,6 +10,8 @@ namespace tsukameruCore
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+
+        RootNode rootNode = new RootNode();
 
         public TsukameruGame()
         {
@@ -17,8 +21,6 @@ namespace tsukameruCore
 
         protected override void Initialize()
         {
-
-
             base.Initialize();
         }
 

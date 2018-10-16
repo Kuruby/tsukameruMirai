@@ -16,6 +16,11 @@ namespace yumeUI
             style = Style ?? new Style();
         }
 
+        private ElementNode()
+        {
+            style = new Style(0, 0, null, null, null);
+        }
+
         [XmlAttribute("type")]
         NodeType nodeType = NodeType.node;
 
