@@ -8,7 +8,7 @@ namespace tsukameruMirai
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
-    public class Main : tsuGame
+    public class Main : TsukameruGame
     {
 
     }

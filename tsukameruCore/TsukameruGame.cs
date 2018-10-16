@@ -4,12 +4,12 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace tsukameruCore
 {
-    public class tsuGame:Game
+    public class TsukameruGame:Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        public tsuGame()
+        public TsukameruGame()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
