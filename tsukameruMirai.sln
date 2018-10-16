@@ -5,6 +5,14 @@ VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tsukameruMirai", "tsukameruMirai\tsukameruMirai.csproj", "{7EB7CA78-8128-4F31-9445-2CBC69E6F4EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tsukameruMiraiAndroid", "tsukameruMiraiAndroid\tsukameruMiraiAndroid.csproj", "{3CB96751-1CC5-4960-9140-62657D165C83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tsukameruCore", "tsukameruCore\tsukameruCore.csproj", "{F21E9FA8-C962-4C44-8DAF-A36AFA969AE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yumeTakusan", "yumeTakusan\yumeTakusan.csproj", "{241924AB-14CB-4FB3-9701-1DEB15C418E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yumeUI", "yumeUI\yumeUI.csproj", "{8CD93D57-3EEB-45EC-B6C3-BD789A3864E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +23,24 @@ Global
 		{7EB7CA78-8128-4F31-9445-2CBC69E6F4EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EB7CA78-8128-4F31-9445-2CBC69E6F4EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EB7CA78-8128-4F31-9445-2CBC69E6F4EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CB96751-1CC5-4960-9140-62657D165C83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CB96751-1CC5-4960-9140-62657D165C83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CB96751-1CC5-4960-9140-62657D165C83}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{3CB96751-1CC5-4960-9140-62657D165C83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CB96751-1CC5-4960-9140-62657D165C83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CB96751-1CC5-4960-9140-62657D165C83}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{F21E9FA8-C962-4C44-8DAF-A36AFA969AE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F21E9FA8-C962-4C44-8DAF-A36AFA969AE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F21E9FA8-C962-4C44-8DAF-A36AFA969AE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F21E9FA8-C962-4C44-8DAF-A36AFA969AE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{241924AB-14CB-4FB3-9701-1DEB15C418E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{241924AB-14CB-4FB3-9701-1DEB15C418E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{241924AB-14CB-4FB3-9701-1DEB15C418E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{241924AB-14CB-4FB3-9701-1DEB15C418E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CD93D57-3EEB-45EC-B6C3-BD789A3864E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CD93D57-3EEB-45EC-B6C3-BD789A3864E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CD93D57-3EEB-45EC-B6C3-BD789A3864E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CD93D57-3EEB-45EC-B6C3-BD789A3864E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
