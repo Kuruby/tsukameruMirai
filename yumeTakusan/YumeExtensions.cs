@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 
-namespace yumeUI.yumeExtensions
+namespace yumeTakusan.yumeExtensions
 {
     public static class YumeExtensions
     {
