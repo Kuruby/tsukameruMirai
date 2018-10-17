@@ -8,18 +8,18 @@ namespace yumeTakusan.contentManagment
 {
     public struct Descriptor
     {
-        private string type;
+        private string datatype;
 
-        private string store;
+        private string type;
 
         private string path;
 
         private string identifier;
 
-        public Descriptor(string Type, string Store, string Path, string Identifier)
+        public Descriptor(string Datatype, string Type, string Path, string Identifier)
         {
+            datatype = Datatype;
             type = Type;
-            store = Store;
             path = Path;
             identifier = Identifier;
         }

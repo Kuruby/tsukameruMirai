@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using yumeUI;
-using yumeTakusan;
+using yumeTakusan.contentManagment;
 
 namespace tsukameruCore
 {
@@ -24,11 +24,12 @@ namespace tsukameruCore
             base.Initialize();
         }
 
+        ContentManager content = new ContentManager();
 
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            ContentManager.LoadAllContent(Content);
 
         }
 

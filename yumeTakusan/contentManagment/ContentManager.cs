@@ -6,14 +6,28 @@ using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json;
 using yumeTakusan.yumeExtensions;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace yumeTakusan.contentManagment
 {
-    class ContentManager
+    public class ContentManager
     {
+        Dictionary<string, Texture2D> images = new Dictionary<string, Texture2D>();
+        Dictionary<string, string> UI = new Dictionary<string, string>();
         public ContentManager()
         {
 
+        }
+
+        public void LoadAllContent()
+        {
+            var descriptors = getAllDescriptors();
+            //load content for each descriptor
+            foreach (Descriptor descriptor in descriptors)
+            {
+                //load the content based on what the datatype and what type it is
+            }
         }
 
         private static List<Descriptor> getAllDescriptors()
