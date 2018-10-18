@@ -54,6 +54,9 @@
   <ItemGroup>
     <Compile Include="contentManagment\ContentManager.cs" />
     <Compile Include="contentManagment\Descriptor.cs" />
+    <Compile Include="Interfaces\IMovable.cs" />
+    <Compile Include="Interfaces\IPhysicsObject.cs" />
+    <Compile Include="Interfaces\IWorldExistence.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="YumeExtensions.cs" />
   </ItemGroup>
