@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseObjects\GameObject.cs" />
+    <Compile Include="BaseObjects\PhysicsGameObject.cs" />
     <Compile Include="contentManagment\ContentManager.cs" />
     <Compile Include="contentManagment\Descriptor.cs" />
     <Compile Include="Interfaces\IAnimatable.cs" />
