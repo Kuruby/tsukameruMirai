@@ -52,8 +52,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseObjects\GameObject.cs" />
     <Compile Include="contentManagment\ContentManager.cs" />
     <Compile Include="contentManagment\Descriptor.cs" />
+    <Compile Include="Interfaces\IAnimatable.cs" />
+    <Compile Include="Interfaces\ICollidable.cs" />
     <Compile Include="Interfaces\IMovable.cs" />
     <Compile Include="Interfaces\IPhysicsObject.cs" />
     <Compile Include="Interfaces\IWorldExistence.cs" />
