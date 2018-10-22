@@ -8,7 +8,10 @@ using yumeTakusan.Interfaces;
 
 namespace yumeTakusan.BaseObjects
 {
-    class PhysicsGameObject : GameObject, IPhysicsObject
+    /// <summary>
+    /// GameObject, IPhysicsObject
+    /// </summary>
+    public abstract class PhysicsGameObject : GameObject, IPhysicsObject
     {
         private float temperature;
         public float Temperature

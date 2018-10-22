@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 
-namespace yumeTakusan.yumeExtensions
+namespace yumeTakusan.Extensions
 {
     public static class YumeExtensions
     {
@@ -36,5 +36,9 @@ namespace yumeTakusan.yumeExtensions
                 list.Add(item);
             }
         }
+
+        public static Rectangle RectangleAtPoint(this Rectangle rectangle, Vector2 point)=>
+            new Rectangle(rectangle.X + (int)point.X, rectangle.Y + (int)point.Y, rectangle.Width, rectangle.Height);
+        
     }
 }

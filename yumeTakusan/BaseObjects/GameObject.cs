@@ -8,10 +8,14 @@ using yumeTakusan.Interfaces;
 
 namespace yumeTakusan.BaseObjects
 {
-    abstract class GameObject : IWorldExistence, IMovable
+    /// <summary>
+    /// IWorldExistence, IMovable
+    /// </summary>
+    public abstract class GameObject : IWorldExistence, IMovable
     {
 
-        private Vector2 location;
+
+        private Vector2 location = Vector2.Zero;
         public Vector2 Location
         {
             get => location;
