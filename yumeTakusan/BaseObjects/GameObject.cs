@@ -16,6 +16,36 @@ namespace yumeTakusan.BaseObjects
     {
         public bool visible = true;
 
+        SpriteEffects effects = SpriteEffects.None;
+
+        public SpriteEffects Effects
+
+        {
+            get => effects;
+            set
+            {
+                effects = value;
+            }
+        }
+
+        Color color;
+
+        public Color Color
+        {
+            get => color;
+            set
+            {
+                color = value;
+            }
+        }
+
+        Texture2D texture;
+
+        public Texture2D Texture
+        {
+            get => texture;
+        }
+
         public abstract void Draw(SpriteBatch spriteBatch, GameTime gameTime);
 
     }

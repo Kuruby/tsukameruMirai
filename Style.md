@@ -24,3 +24,6 @@ Accessor
 		set=value;
 	}
 }
+
+Empty functions have their braces on the same line.
+function f(){}

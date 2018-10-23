@@ -58,8 +58,10 @@
     <Compile Include="BaseObjects\PhysicsGameObject.cs" />
     <Compile Include="Camera\Camera.cs" />
     <Compile Include="Camera\CameraViewType.cs" />
-    <Compile Include="contentManagment\ContentManager.cs" />
-    <Compile Include="contentManagment\Descriptor.cs" />
+    <Compile Include="Components\AnimatedDrawComponent.cs" />
+    <Compile Include="Components\DrawComponent.cs" />
+    <Compile Include="ContentManagment\ContentManager.cs" />
+    <Compile Include="ContentManagment\Descriptor.cs" />
     <Compile Include="Interfaces\IAnimatable.cs" />
     <Compile Include="Interfaces\ICollidable.cs" />
     <Compile Include="Interfaces\IDrawable.cs" />
@@ -67,7 +69,7 @@
     <Compile Include="Interfaces\IPhysicsObject.cs" />
     <Compile Include="Interfaces\IUpdatable.cs" />
     <Compile Include="Interfaces\IWorldExistence.cs" />
-    <Compile Include="PhysicsComponent.cs" />
+    <Compile Include="Components\PhysicsComponent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="YumeExtensions.cs" />
   </ItemGroup>

@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using yumeUI;
-using yumeTakusan.contentManagment;
+using yumeTakusan.ContentManagment;
 
 namespace tsukameruCore
 {
@@ -24,12 +24,12 @@ namespace tsukameruCore
             base.Initialize();
         }
 
-        ContentManager content = new ContentManager();
+        ContentStorageManager content = new ContentStorageManager();
 
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            ContentManager.LoadAllContent(Content);
+            content.LoadAllContent(Content);
 
         }
 
@@ -45,7 +45,7 @@ namespace tsukameruCore
 
         protected override void Draw(GameTime gameTime)
         {
-
+            GraphicsDevice.Clear(Color.MediumAquamarine);
 
             base.Draw(gameTime);
         }

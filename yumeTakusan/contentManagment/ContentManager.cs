@@ -7,23 +7,24 @@ using System.IO;
 using Newtonsoft.Json;
 using yumeTakusan.Extensions;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using yumeUI;
 
-namespace yumeTakusan.contentManagment
+namespace yumeTakusan.ContentManagment
 {
-    public class ContentManager
+    public class ContentStorageManager
     {
         Dictionary<string, Texture2D> images = new Dictionary<string, Texture2D>();
         Dictionary<string, RootNode> UI = new Dictionary<string, RootNode>();
-        public ContentManager()
+        public ContentStorageManager()
         {
 
         }
 
-        public void LoadAllContent()
+        public void LoadAllContent(ContentManager Content)
         {
-            var descriptors = getAllDescriptors();
+            var descriptors = GetAllDescriptors();
             //load content for each descriptor
             foreach (Descriptor descriptor in descriptors)
             {
@@ -32,9 +33,14 @@ namespace yumeTakusan.contentManagment
             }
         }
 
-        private static List<Descriptor> getAllDescriptors()
+        private static List<Descriptor> GetAllDescriptors()
         {
             List<Descriptor> list = new List<Descriptor>();
+            //check that the file path exists
+            if(!Directory.Exists("descriptors"))
+            {
+                Directory.CreateDirectory("descriptors");
+            }
             string[] descriptorFilePaths = Directory.GetFiles("descriptors", "*.lmjson", SearchOption.AllDirectories);
             foreach (string path in descriptorFilePaths)
             {

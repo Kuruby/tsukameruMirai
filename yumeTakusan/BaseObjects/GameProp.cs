@@ -8,7 +8,7 @@ using yumeTakusan.Interfaces;
 
 namespace yumeTakusan.BaseObjects
 {
-    public abstract class GameProp:IWorldExistence,IMovable,IUpdatable
+    public abstract class GameProp:Interfaces.IWorldExistence,IMovable,IUpdatable
     {
 
 

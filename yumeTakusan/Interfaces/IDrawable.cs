@@ -8,8 +8,12 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace yumeTakusan.Interfaces
 {
-    interface IDrawable
+    public interface IDrawable : IWorldExistence
     {
-        void Draw(SpriteBatch spriteBatch,GameTime gameTime);
+        SpriteEffects Effects { get; set; }
+        Color Color { get; set; }
+        Texture2D Texture { get; }
+
+        void Draw(SpriteBatch spriteBatch, GameTime gameTime);
     }
 }

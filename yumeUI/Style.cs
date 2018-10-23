@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
-using yumeTakusan.yumeExtensions;
+using yumeTakusan.Extensions;
 
 namespace yumeUI
 {
@@ -36,7 +36,7 @@ namespace yumeUI
         {
             //Turns this Style into the style specified by the string.
 
-            List<string> list = styleString.Split(new char[]{ ';' },StringSplitOptions.RemoveEmptyEntries).ToList();
+            List<string> list = styleString.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries).ToList();
             foreach (string item in list)
             {
                 string text = item.Split(':')[0];

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using yumeTakusan.BaseObjects;
+using yumeTakusan.Components;
 
 namespace yumeTakusan.Camera
 {
@@ -13,20 +14,22 @@ namespace yumeTakusan.Camera
         public Camera(CameraViewType ViewType)
         {
             viewType = ViewType;
+            physicsComponent = new PhysicsComponent(this);
         }
 
         CameraViewType viewType;
-        PhysicsComponent physicsComponent = new PhysicsComponent();
+
+        PhysicsComponent physicsComponent;
 
 
         public override void Update(GameTime gameTime)
         {
-
+            physicsComponent.Update(gameTime);
         }
 
-        public void SwitchViewType(CameraViewType switchTo)
+        public void SwitchViewType(CameraViewType switchTo,bool animateTransition=false)
         {
-            //add extra fancy transition, maybe?
+            //TODO: Add animated transition from one type to the other
             viewType = switchTo;
         }
     }
