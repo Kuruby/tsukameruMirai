@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using yumeUI;
 using yumeTakusan.ContentManagment;
+using yumeTakusan.Camera;
 
 namespace tsukameruCore
 {
@@ -11,13 +12,15 @@ namespace tsukameruCore
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        RootNode rootNode = new RootNode();
+
 
         public TsukameruGame()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
         }
+
+        Camera camera = new Camera(CameraViewType.Sidescroller);
 
         protected override void Initialize()
         {

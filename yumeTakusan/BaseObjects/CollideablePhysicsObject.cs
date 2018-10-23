@@ -16,10 +16,11 @@ namespace yumeTakusan.BaseObjects
         public Rectangle Hitbox
         {
             get => hitbox;
-            set { hitbox = value; }
+            set { hitbox = value; worldHitbox = hitbox.RectangleAtPoint(Location); }
         }
 
-        public Rectangle WorldLocationHitbox => hitbox.RectangleAtPoint(Location);
+        private Rectangle worldHitbox;
+        public Rectangle WorldLocationHitbox => worldHitbox;
 
 
         public bool CheckCollision(ICollidable otherObject) =>
