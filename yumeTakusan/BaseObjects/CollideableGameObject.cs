@@ -6,20 +6,32 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using yumeTakusan.Interfaces;
 using yumeTakusan.Extensions;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace yumeTakusan.BaseObjects
 {
     //PhysicsGameObject, ICollidable
-    public abstract class CollideablePhysicsObject : PhysicsGameObject, ICollidable
+    public abstract class CollideableGameObject : GameObject, ICollidable
     {
-        private Rectangle hitbox;
+
+        public CollideableGameObject(Texture2D Texture,Rectangle Hitbox, Color? Colour = null, SpriteEffects Effects = SpriteEffects.None,
+            bool Visible = true, Vector2 Location = default(Vector2)) : base(Texture,Colour,Effects,Visible,Location)
+        {
+            hitbox = Hitbox;
+        }
+
+
+        protected Rectangle hitbox;
+
         public Rectangle Hitbox
         {
             get => hitbox;
             set { hitbox = value; worldHitbox = hitbox.RectangleAtPoint(Location); }
         }
 
+
         private Rectangle worldHitbox;
+
         public Rectangle WorldLocationHitbox => worldHitbox;
 
 

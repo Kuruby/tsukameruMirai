@@ -52,10 +52,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseObjects\CollideablePhysicsObject.cs" />
+    <Compile Include="BaseObjects\CollideableGameObject.cs" />
     <Compile Include="BaseObjects\GameObject.cs" />
     <Compile Include="BaseObjects\GameProp.cs" />
-    <Compile Include="BaseObjects\PhysicsGameObject.cs" />
     <Compile Include="Camera\Camera.cs" />
     <Compile Include="Camera\CameraViewType.cs" />
     <Compile Include="Components\AnimatedDrawComponent.cs" />
@@ -66,7 +65,6 @@
     <Compile Include="Interfaces\ICollidable.cs" />
     <Compile Include="Interfaces\IDrawable.cs" />
     <Compile Include="Interfaces\IMovable.cs" />
-    <Compile Include="Interfaces\IPhysicsObject.cs" />
     <Compile Include="Interfaces\IUpdatable.cs" />
     <Compile Include="Interfaces\IWorldExistence.cs" />
     <Compile Include="Components\PhysicsComponent.cs" />

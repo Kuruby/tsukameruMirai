@@ -10,19 +10,28 @@ using yumeTakusan.Components;
 
 namespace tsukameruCore
 {
-    class Player : CollideablePhysicsObject
+    class Player : CollideableGameObject
     {
 
+        public Player(Texture2D Texture, Rectangle Hitbox, Color? Colour = null, SpriteEffects Effects = SpriteEffects.None,
+            bool Visible = true, Vector2 Location = default(Vector2)) : base(Texture,Hitbox,Colour,Effects,Visible,Location)
+        {
+            drawComponent = new DrawComponent(this);
+            physicsComponent = new PhysicsComponent(this);
+        }
+
+        DrawComponent drawComponent;
+        PhysicsComponent physicsComponent;
         
 
         public override void Update(GameTime gameTime)
         {
-
+            physicsComponent.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-
+            drawComponent.Draw(spriteBatch,, gameTime,);
         }
     }
 }

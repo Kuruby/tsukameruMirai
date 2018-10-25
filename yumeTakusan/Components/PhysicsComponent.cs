@@ -8,7 +8,7 @@ using yumeTakusan.Interfaces;
 
 namespace yumeTakusan.Components
 {
-    class PhysicsComponent : IUpdatable
+    public class PhysicsComponent : IUpdatable
     {
         public PhysicsComponent() : this(null) { }
 

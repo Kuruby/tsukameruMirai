@@ -14,9 +14,18 @@ namespace yumeTakusan.BaseObjects
     /// </summary>
     public abstract class GameObject : GameProp, Interfaces.IDrawable
     {
+        public GameObject(Texture2D Texture, Color? Colour = null, SpriteEffects Effects = SpriteEffects.None,
+            bool Visible = true, Vector2 Location = default(Vector2)) : base(Location)
+        {
+            texture = Texture;
+            color = Colour ?? Color.White;
+            effects = Effects;
+            visible = Visible;
+        }
+
         public bool visible = true;
 
-        SpriteEffects effects = SpriteEffects.None;
+        private SpriteEffects effects = SpriteEffects.None;
 
         public SpriteEffects Effects
 
@@ -28,7 +37,7 @@ namespace yumeTakusan.BaseObjects
             }
         }
 
-        Color color;
+        private Color color;
 
         public Color Color
         {
@@ -39,13 +48,14 @@ namespace yumeTakusan.BaseObjects
             }
         }
 
-        Texture2D texture;
+        private Texture2D texture;
 
         public Texture2D Texture
         {
             get => texture;
         }
 
+       //TODO: Add two extra arguments
         public abstract void Draw(SpriteBatch spriteBatch, GameTime gameTime);
 
     }

@@ -8,11 +8,20 @@ using yumeTakusan.Interfaces;
 
 namespace yumeTakusan.BaseObjects
 {
-    public abstract class GameProp:Interfaces.IWorldExistence,IMovable,IUpdatable
+    public abstract class GameProp : Interfaces.IWorldExistence, IMovable, IUpdatable
     {
+        public GameProp(Vector2 Location=default(Vector2))
+        {
+            location = Location;
+        }
 
 
-        private Vector2 location = Vector2.Zero;
+
+
+        protected Vector2 location;
+
+
+
 
         public Vector2 Location
         {
@@ -33,7 +42,8 @@ namespace yumeTakusan.BaseObjects
         }
 
 
-        private Vector2 velocity = Vector2.Zero;
+
+        protected Vector2 velocity = Vector2.Zero;
 
         public Vector2 Velocity
         {
@@ -54,7 +64,8 @@ namespace yumeTakusan.BaseObjects
         }
 
 
-        private Vector2 acceleration = Vector2.Zero;
+
+        protected Vector2 acceleration = Vector2.Zero;
 
         public Vector2 Acceleration
         {
