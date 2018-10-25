@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using yumeTakusan.BaseObjects;
 using yumeTakusan.Components;
+using yumeTakusan.Camera;
 
 namespace tsukameruCore
 {
@@ -29,9 +30,9 @@ namespace tsukameruCore
             physicsComponent.Update(gameTime);
         }
 
-        public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
+        public override void Draw(SpriteBatch spriteBatch,Camera camera, GameTime gameTime,float layerDepth)
         {
-            drawComponent.Draw(spriteBatch,, gameTime,);
+            drawComponent.Draw(spriteBatch,camera, gameTime,layerDepth);
         }
     }
 }

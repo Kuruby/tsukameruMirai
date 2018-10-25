@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using yumeTakusan.Interfaces;
+using yumeTakusan.Camera;
 
 namespace yumeTakusan.BaseObjects
 {
@@ -55,8 +56,8 @@ namespace yumeTakusan.BaseObjects
             get => texture;
         }
 
-       //TODO: Add two extra arguments
-        public abstract void Draw(SpriteBatch spriteBatch, GameTime gameTime);
+        //TODO: Add two extra arguments
+        public abstract void Draw(SpriteBatch spriteBatch, Camera.Camera camera, GameTime gameTime, float layerDepth);
 
     }
 }

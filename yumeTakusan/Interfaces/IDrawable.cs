@@ -14,6 +14,6 @@ namespace yumeTakusan.Interfaces
         Color Color { get; set; }
         Texture2D Texture { get; }
 
-        void Draw(SpriteBatch spriteBatch, GameTime gameTime);
+        void Draw(SpriteBatch spriteBatch, Camera.Camera camera, GameTime gameTime, float layerDepth);
     }
 }
