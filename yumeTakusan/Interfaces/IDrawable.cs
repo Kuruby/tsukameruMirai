@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace yumeTakusan.Interfaces
 {
-    public interface IDrawable : IWorldExistence
+    public interface IDrawable : IWorldExistense
     {
         SpriteEffects Effects { get; set; }
         Color Color { get; set; }

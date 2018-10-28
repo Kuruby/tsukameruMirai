@@ -10,7 +10,7 @@ namespace yumeTakusan.Interfaces
     /// <summary>
     /// IWorldExistence provides an interface that guarantees that an object will be able to exist in the world.
     /// </summary>
-    public interface IWorldExistense
+    public interface IWorldExistence
     {
         Vector2 Location { get; set; }
         float LocationXComponent { get; set; }
