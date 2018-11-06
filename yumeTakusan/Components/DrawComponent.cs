@@ -34,7 +34,7 @@ namespace yumeTakusan.Components
 
         public void Draw(SpriteBatch spriteBatch, Camera.Camera camera, GameTime gameTime, float layerDepth)
         {
-            spriteBatch.Draw(drawnObject.Texture, drawnObject.Location, null, drawnObject.Color, 0f, Vector2.Zero, 1f, drawnObject.Effects, layerDepth);
+            spriteBatch.Draw(drawnObject.Texture, drawnObject.Location-camera.Location, null, drawnObject.Color, 0f, Vector2.Zero, 1f, drawnObject.Effects, layerDepth);
         }
     }
 }
