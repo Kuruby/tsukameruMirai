@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tsukameruMirai", "tsukameruMirai\tsukameruMirai.csproj", "{7EB7CA78-8128-4F31-9445-2CBC69E6F4EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tsukameruMiraiAndroid", "tsukameruMiraiAndroid\tsukameruMiraiAndroid.csproj", "{3CB96751-1CC5-4960-9140-62657D165C83}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tsukameruCore", "tsukameruCore\tsukameruCore.csproj", "{F21E9FA8-C962-4C44-8DAF-A36AFA969AE8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yumeTakusan", "yumeTakusan\yumeTakusan.csproj", "{241924AB-14CB-4FB3-9701-1DEB15C418E0}"
@@ -13,6 +15,7 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CommonContent", "CommonCont
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		CommonContent\CommonContent.projitems*{3cb96751-1cc5-4960-9140-62657d165c83}*SharedItemsImports = 4
 		CommonContent\CommonContent.projitems*{7eb7ca78-8128-4f31-9445-2cbc69e6f4ec}*SharedItemsImports = 4
 		CommonContent\CommonContent.projitems*{a0cdbd0e-3a41-42b7-9425-a838bc2c7383}*SharedItemsImports = 13
 	EndGlobalSection
@@ -25,6 +28,12 @@ Global
 		{7EB7CA78-8128-4F31-9445-2CBC69E6F4EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EB7CA78-8128-4F31-9445-2CBC69E6F4EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EB7CA78-8128-4F31-9445-2CBC69E6F4EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CB96751-1CC5-4960-9140-62657D165C83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CB96751-1CC5-4960-9140-62657D165C83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CB96751-1CC5-4960-9140-62657D165C83}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{3CB96751-1CC5-4960-9140-62657D165C83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CB96751-1CC5-4960-9140-62657D165C83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CB96751-1CC5-4960-9140-62657D165C83}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{F21E9FA8-C962-4C44-8DAF-A36AFA969AE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F21E9FA8-C962-4C44-8DAF-A36AFA969AE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F21E9FA8-C962-4C44-8DAF-A36AFA969AE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
