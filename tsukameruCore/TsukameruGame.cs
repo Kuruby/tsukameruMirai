@@ -7,9 +7,9 @@ using yumeTakusan.Camera;
 
 namespace tsukameruCore
 {
-    public class TsukameruGame : Game
+    public class TsukameruGame:Game
     {
-        protected GraphicsDeviceManager graphics;
+        GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
 
@@ -38,7 +38,7 @@ namespace tsukameruCore
 
         protected void InitializeAfterContentLoad()
         {
-
+            
         }
 
         RootNode testUi;
@@ -56,7 +56,7 @@ namespace tsukameruCore
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.MediumAquamarine);
-
+            
             base.Draw(gameTime);
         }
     }
