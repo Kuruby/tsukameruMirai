@@ -11,8 +11,9 @@ namespace tsukameruMiraiAndroid
     public class Main : TsukameruGame
     {
 
-        public Main()
+        public Main():base()
         {
+            
             graphics.IsFullScreen = true;
             //Do not set graphics size; tsukameruGame autodetects and will be able to adapt based on this
             graphics.SupportedOrientations = DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight;

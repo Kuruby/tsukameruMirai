@@ -11,7 +11,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tsukameruCore", "tsukameruC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yumeTakusan", "yumeTakusan\yumeTakusan.csproj", "{241924AB-14CB-4FB3-9701-1DEB15C418E0}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CommonContent", "CommonContent\CommonContent.shproj", "{A0CDBD0E-3A41-42B7-9425-A838BC2C7383}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		CommonContent\CommonContent.projitems*{3cb96751-1cc5-4960-9140-62657d165c83}*SharedItemsImports = 4
+		CommonContent\CommonContent.projitems*{7eb7ca78-8128-4f31-9445-2cbc69e6f4ec}*SharedItemsImports = 4
+		CommonContent\CommonContent.projitems*{a0cdbd0e-3a41-42b7-9425-a838bc2c7383}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
