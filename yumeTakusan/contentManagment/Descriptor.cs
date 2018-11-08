@@ -8,20 +8,24 @@ namespace yumeTakusan.ContentManagment
 {
     public struct Descriptor
     {
-        private string datatype;
+        public string datatype;
 
-        private string type;
+        public string type;
 
-        private string path;
+        public string path;
 
-        private string identifier;
+        public string identifier;
+        
+        public string locale;
 
-        public Descriptor(string Datatype, string Type, string Path, string Identifier)
+
+        public Descriptor(string Datatype, string Type, string Path, string Identifier, string Locale = null)
         {
             datatype = Datatype;
             type = Type;
             path = Path;
             identifier = Identifier;
+            locale = Locale ?? "neutral";
         }
     }
 

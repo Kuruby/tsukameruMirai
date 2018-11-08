@@ -33,8 +33,15 @@ namespace tsukameruCore
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             content.LoadAllContent(Content);
-
+            InitializeAfterContentLoad();
         }
+
+        protected void InitializeAfterContentLoad()
+        {
+            
+        }
+
+        RootNode testUi;
 
         protected override void UnloadContent() { }
 
@@ -49,7 +56,7 @@ namespace tsukameruCore
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.MediumAquamarine);
-
+            
             base.Draw(gameTime);
         }
     }

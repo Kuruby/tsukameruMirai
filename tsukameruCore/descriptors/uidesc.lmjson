@@ -3,4 +3,10 @@
   "type": "ui",
   "path": "UI.xml",
   "identifier": "ui"
+},
+{
+  "datatype": "xnb",
+  "type": "tex2d",
+  "path": "pixel.xnb",
+  "identifier": "pixel"
 }
