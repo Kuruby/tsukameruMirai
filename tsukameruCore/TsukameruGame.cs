@@ -9,7 +9,7 @@ namespace tsukameruCore
 {
     public class TsukameruGame:Game
     {
-        GraphicsDeviceManager graphics;
+        protected GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
 
@@ -41,7 +41,7 @@ namespace tsukameruCore
             
         }
 
-        RootNode testUi;
+        //RootNode testUi;
 
         protected override void UnloadContent() { }
 

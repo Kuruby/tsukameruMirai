@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 using System.IO;
 using Newtonsoft.Json;
 using yumeTakusan.Extensions;
@@ -39,6 +40,7 @@ namespace yumeTakusan.ContentManagment
 
 
 
+
         private static List<Descriptor> GetAllDescriptors()
         {
             List<Descriptor> list = new List<Descriptor>();
@@ -62,6 +64,9 @@ namespace yumeTakusan.ContentManagment
             }
             return list;
         }
+
+
+
 
 
         private void LoadContentFromDescriptor(Descriptor descriptor, ContentManager content)
