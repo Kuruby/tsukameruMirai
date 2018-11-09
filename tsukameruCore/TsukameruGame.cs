@@ -7,12 +7,12 @@ using yumeTakusan.Camera;
 
 namespace tsukameruCore
 {
-    public class TsukameruGame:Game
+    public class TsukameruGame : Game
     {
         protected GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-
+        protected ContentStorageManager content;
 
         public TsukameruGame()
         {
@@ -27,18 +27,18 @@ namespace tsukameruCore
             base.Initialize();
         }
 
-        ContentStorageManager content = new ContentStorageManager();
+        
 
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            content.LoadAllContent(Content);
+            content.LoadAllContent();
             InitializeAfterContentLoad();
         }
 
         protected void InitializeAfterContentLoad()
         {
-            
+
         }
 
         //RootNode testUi;
@@ -56,7 +56,7 @@ namespace tsukameruCore
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.MediumAquamarine);
-            
+
             base.Draw(gameTime);
         }
     }

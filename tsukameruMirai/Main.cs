@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using tsukameruCore;
+using yumeTakusan.ContentManagment;
 
 namespace tsukameruMirai
 {
@@ -10,6 +11,9 @@ namespace tsukameruMirai
     /// </summary>
     public class Main : TsukameruGame
     {
-
+        public Main():base()
+        {
+            content = new DesktopContentStorageManager(Content);
+        }
     }
 }
