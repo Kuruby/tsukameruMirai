@@ -14,12 +14,10 @@ using yumeUI;
 using System.Xml.Serialization;
 using yumeTakusan.ContentManagment;
 
-namespace tsukameruMirai
+namespace yumeTakusan.Desktop
 {
     public class DesktopContentStorageManager : ContentStorageManager
     {
-
-
 
         public DesktopContentStorageManager(ContentManager Content) : base(Content) { }
 

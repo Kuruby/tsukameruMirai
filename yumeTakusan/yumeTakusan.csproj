@@ -58,8 +58,9 @@
     <Compile Include="BaseObjects\CollideableGameObject.cs" />
     <Compile Include="BaseObjects\GameObject.cs" />
     <Compile Include="BaseObjects\GameProp.cs" />
-    <Compile Include="Camera\Camera.cs" />
-    <Compile Include="Camera\CameraViewType.cs" />
+    <Compile Include="GameObjects\Player.cs" />
+    <Compile Include="YumeCamera\Camera.cs" />
+    <Compile Include="YumeCamera\CameraViewType.cs" />
     <Compile Include="Components\AnimatedDrawComponent.cs" />
     <Compile Include="Components\DrawComponent.cs" />
     <Compile Include="ContentManagment\ContentStorageManager.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Components\PhysicsComponent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="YumeExtensions.cs" />
+    <Compile Include="yumeGame.cs" />
     <Compile Include="yumeUI\ElementNode.cs" />
     <Compile Include="yumeUI\IWorldExistense.cs" />
     <Compile Include="yumeUI\NodeType.cs" />

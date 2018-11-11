@@ -5,8 +5,8 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("tsukameruMirai")]
-[assembly: AssemblyProduct("tsukameruMirai")]
+[assembly: AssemblyTitle("tsukameruMiraiDesktop")]
+[assembly: AssemblyProduct("tsukameruMiraiDesktop")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyCompany("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("5f9c6911-9396-4977-8189-4e04c30eccd0")]
+[assembly: Guid("228ae991-7f66-4178-88a5-9a120adc074f")]
 
 // Version information for an assembly consists of the following four values:
 //

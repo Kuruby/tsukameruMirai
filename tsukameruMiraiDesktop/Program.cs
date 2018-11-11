@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace tsukameruMirai
+namespace tsukameruMiraiDesktop
 {
     /// <summary>
     /// The main class.

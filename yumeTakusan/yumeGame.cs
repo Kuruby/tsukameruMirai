@@ -1,20 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using yumeUI;
 using yumeTakusan.ContentManagment;
-using yumeTakusan.Camera;
+using yumeTakusan.YumeCamera;
 
-namespace tsukameruCore
+namespace yumeTakusan
 {
-    public class TsukameruGame : Game
+    public class yumeGame:Game
     {
         protected GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
         protected ContentStorageManager content;
 
-        public TsukameruGame()
+        public yumeGame()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -27,7 +30,7 @@ namespace tsukameruCore
             base.Initialize();
         }
 
-        
+
 
         protected override void LoadContent()
         {

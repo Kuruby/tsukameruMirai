@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using yumeTakusan.YumeCamera;
 
 namespace yumeTakusan.Interfaces
 {
@@ -14,6 +15,6 @@ namespace yumeTakusan.Interfaces
         Color Color { get; set; }
         Texture2D Texture { get; }
 
-        void Draw(SpriteBatch spriteBatch, Camera.Camera camera, GameTime gameTime, float layerDepth);
+        void Draw(SpriteBatch spriteBatch, Camera camera, GameTime gameTime, float layerDepth);
     }
 }

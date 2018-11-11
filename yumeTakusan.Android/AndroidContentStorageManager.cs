@@ -16,7 +16,7 @@ using Microsoft.Xna.Framework.Input;
 using yumeTakusan.ContentManagment;
 using Android.Content.Res;
 
-namespace tsukameruMiraiAndroid
+namespace yumeTakusan.Android
 {
 
     class AndroidContentStorageManager:ContentStorageManager

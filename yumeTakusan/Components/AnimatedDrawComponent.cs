@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using yumeTakusan.Camera;
+using yumeTakusan.YumeCamera;
 using yumeTakusan.Interfaces;
 
 namespace yumeTakusan.Components
@@ -38,7 +38,7 @@ namespace yumeTakusan.Components
                 drawnObject.frameWidth, drawnObject.frameHeight);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Camera.Camera camera, GameTime gameTime, float layerDepth)
+        public void Draw(SpriteBatch spriteBatch, Camera camera, GameTime gameTime, float layerDepth)
         {
             spriteBatch.Draw(drawnObject.Texture, drawnObject.Location-camera.Location, drawnObject.frameLocation, drawnObject.Color, 0f, Vector2.Zero, 1f, drawnObject.Effects, layerDepth);
         }

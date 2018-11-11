@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // アセンブリに関する一般情報は以下の属性セットをとおして制御されます。
 // アセンブリに関連付けられている情報を変更するには、
 // これらの属性値を変更してください。
-[assembly: AssemblyTitle("tsukameruCore")]
+[assembly: AssemblyTitle("yumeTakusan.Desktop")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("tsukameruCore")]
+[assembly: AssemblyProduct("yumeTakusan.Desktop")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // このプロジェクトが COM に公開される場合、次の GUID が typelib の ID になります
-[assembly: Guid("f21e9fa8-c962-4c44-8daf-a36afa969ae8")]
+[assembly: Guid("d75fd588-8c1f-40be-bd8c-64a16f1e98fc")]
 
 // アセンブリのバージョン情報は次の 4 つの値で構成されています:
 //

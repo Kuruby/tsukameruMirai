@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using yumeTakusan.BaseObjects;
 using yumeTakusan.Components;
 
-namespace yumeTakusan.Camera
+namespace yumeTakusan.YumeCamera
 {
     public class Camera:GameProp
     {

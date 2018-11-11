@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace yumeUI
+namespace yumeTakusan.YumeCamera
 {
-    public enum NodeType
+    public enum CameraViewType
     {
-        node
+        Sidescroller,
+        Isometric,
+        Topdown
     }
 }
