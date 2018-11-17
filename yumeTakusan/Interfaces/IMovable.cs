@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using yumeTakusan.Interfaces;
 
 namespace yumeTakusan.Interfaces
 {
-    public interface IMovable :IWorldExistence
+    public interface IMovable : IWorldExistence
     {
         Vector2 Velocity { get; set; }
         float VelocityXComponent { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace yumeUI
+namespace yumeTakusan.yumeUI
 {
     public class ElementNode
     {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using yumeTakusan.Extensions;
 
-namespace yumeUI
+namespace yumeTakusan.yumeUI
 {
     public struct Style
     {

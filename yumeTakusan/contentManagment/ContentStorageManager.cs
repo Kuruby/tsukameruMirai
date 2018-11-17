@@ -10,7 +10,7 @@ using yumeTakusan.Extensions;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using yumeUI;
+using yumeTakusan.yumeUI;
 using System.Xml.Serialization;
 
 namespace yumeTakusan.ContentManagment
@@ -27,7 +27,19 @@ namespace yumeTakusan.ContentManagment
         protected Dictionary<string, Texture2D> imageStore = new Dictionary<string, Texture2D>();
         protected Dictionary<string, RootNode> UIStore = new Dictionary<string, RootNode>();
 
-        
+        public object getContent<T>(string identifier)
+        {
+            string type = typeof(T).ToString();
+            switch (type)
+            {
+                case "Microsoft.Xna.Framework.Graphics.Texture2D":
+                    return imageStore[identifier];
+                case "yumeTakusan.yumeUI.RootNode":
+                    return UIStore[identifier];
+                default:
+                    throw new Exception($"theres no such thing as a {type}");
+            }
+        }
 
         protected abstract List<Descriptor> GetAllDescriptors();
 
@@ -42,7 +54,6 @@ namespace yumeTakusan.ContentManagment
             foreach (Descriptor descriptor in descriptors)
             {
                 LoadContentFromDescriptor(descriptor);
-
             }
         }
 

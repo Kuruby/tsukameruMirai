@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using System.Xml.Serialization;
 using System.IO;
 
-namespace yumeUI
+namespace yumeTakusan.yumeUI
 {
     [XmlRoot("root")]
     public class RootNode

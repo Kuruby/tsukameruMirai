@@ -9,7 +9,7 @@ using yumeTakusan.YumeCamera;
 
 namespace yumeTakusan.Interfaces
 {
-    public interface IDrawable : IWorldExistense
+    public interface IDrawable : IWorldExistence
     {
         SpriteEffects Effects { get; set; }
         Color Color { get; set; }

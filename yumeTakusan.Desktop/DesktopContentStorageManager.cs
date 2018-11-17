@@ -10,7 +10,7 @@ using yumeTakusan.Extensions;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using yumeUI;
+using yumeTakusan.yumeUI;
 using System.Xml.Serialization;
 using yumeTakusan.ContentManagment;
 

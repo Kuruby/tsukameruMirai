@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using yumeTakusan.ContentManagment;
 using yumeTakusan.YumeCamera;
+using yumeTakusan.yumeUI;
 
 namespace yumeTakusan
 {
@@ -22,6 +23,9 @@ namespace yumeTakusan
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
         }
+
+        RootNode testUI;
+        Texture2D pixel;
 
         Camera camera = new Camera(CameraViewType.Sidescroller);
 
@@ -41,10 +45,10 @@ namespace yumeTakusan
 
         protected void InitializeAfterContentLoad()
         {
-
+            testUI = (RootNode)content.getContent<RootNode>("ui");
+            pixel = (Texture2D)content.getContent<Texture2D>("pixel");
         }
 
-        //RootNode testUi;
 
         protected override void UnloadContent() { }
 
