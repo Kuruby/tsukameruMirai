@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using System.Xml.Serialization;
 using System.IO;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace yumeTakusan.yumeUI
 {
@@ -16,7 +17,7 @@ namespace yumeTakusan.yumeUI
         public ElementNode node;
 
         [XmlAttribute("style")]
-        private Style style = new Style(5);
+        private Style style = new Style(5,0,0,Positions._static);
 
         [XmlAttribute("style")]
         public string styleString
@@ -30,6 +31,9 @@ namespace yumeTakusan.yumeUI
                 style = style.FromString(value);
             }
         }
+
+        [XmlIgnore]
+        public static Texture2D pixel;
 
         public RootNode()
         {
@@ -49,6 +53,11 @@ namespace yumeTakusan.yumeUI
         {
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(RootNode));
             return (RootNode)xmlSerializer.Deserialize(new MemoryStream(Encoding.Unicode.GetBytes("\ufeff" + xml)));
+        }
+
+        public void Draw(GameTime gameTime,SpriteBatch spriteBatch)
+        {
+            
         }
     }
 }

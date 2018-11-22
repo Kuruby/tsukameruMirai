@@ -18,7 +18,7 @@ namespace yumeTakusan.yumeUI
 
         private ElementNode()
         {
-            style = new Style(0, 0, null, null, null);
+            style = new Style();
         }
 
         [XmlAttribute("type")]

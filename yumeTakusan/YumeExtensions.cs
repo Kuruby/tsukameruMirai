@@ -29,6 +29,17 @@ namespace yumeTakusan.Extensions
             return int.Parse(str);
         }
 
+        public static Vector2 GetVector2(this string str)
+        {
+            var components = str.Split(',');
+            return new Vector2(int.Parse(components[0]), int.Parse(components[1]));
+        }
+
+        public static T GetEnum<T>(this string str)
+        {
+            return (T)Enum.Parse(typeof(T),str);
+        }
+
         public static void AddAll<T>(this List<T> list, T[] toAdd)
         {
             foreach (T item in toAdd)
@@ -37,8 +48,8 @@ namespace yumeTakusan.Extensions
             }
         }
 
-        public static Rectangle RectangleAtPoint(this Rectangle rectangle, Vector2 point)=>
+        public static Rectangle RectangleAtPoint(this Rectangle rectangle, Vector2 point) =>
             new Rectangle(rectangle.X + (int)point.X, rectangle.Y + (int)point.Y, rectangle.Width, rectangle.Height);
-        
+
     }
 }

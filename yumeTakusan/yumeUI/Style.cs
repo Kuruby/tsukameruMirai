@@ -10,7 +10,7 @@ namespace yumeTakusan.yumeUI
 {
     public struct Style
     {
-        public Style(int Padding = 0, int Border = 0, Color? BorderColor = default(Color?),
+        public Style(int Padding = 0, int Border = 0, int Margin = 0, Positions Position = Positions._relative, Vector2 Location = default(Vector2), Color? BorderColor = default(Color?),
             Color? BackGroundColor = default(Color?), Color? MainColor = default(Color?))
         {
             padding = Padding;
@@ -18,7 +18,16 @@ namespace yumeTakusan.yumeUI
             borderColor = (BorderColor ?? Color.Transparent);
             backgroundColor = (BackGroundColor ?? Color.Transparent);
             mainColor = (MainColor ?? Color.White);
+            margin = Margin;
+            position = Position;
+            location = Location;
         }
+
+        public Positions position;
+
+        public Vector2 location;
+
+        public int margin;
 
         public int padding;
 
@@ -32,6 +41,10 @@ namespace yumeTakusan.yumeUI
 
         private bool hasBorder => border > 0;
 
+        private bool hasPadding => padding > 0;
+
+        private bool hasMargin => margin > 0;
+
         public Style FromString(string styleString)
         {
             //Turns this Style into the style specified by the string.
@@ -43,6 +56,9 @@ namespace yumeTakusan.yumeUI
                 string str = item.Split(':')[1];
                 switch (text)
                 {
+                    case "margin":
+                        margin = str.GetInt();
+                        break;
                     case "padding":
                         padding = str.GetInt();
                         break;
@@ -57,6 +73,12 @@ namespace yumeTakusan.yumeUI
                         break;
                     case "color":
                         mainColor = str.GetColor();
+                        break;
+                    case "location":
+                        location = str.GetVector2();
+                        break;
+                    case "position":
+                        position = str.GetEnum<Positions>();
                         break;
                 }
             }

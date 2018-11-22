@@ -58,6 +58,7 @@
     <Compile Include="BaseObjects\CollideableGameObject.cs" />
     <Compile Include="BaseObjects\GameObject.cs" />
     <Compile Include="BaseObjects\GameProp.cs" />
+    <Compile Include="Components\ControlComponent.cs" />
     <Compile Include="GameObjects\Player.cs" />
     <Compile Include="YumeCamera\Camera.cs" />
     <Compile Include="YumeCamera\CameraViewType.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="yumeGame.cs" />
     <Compile Include="yumeUI\ElementNode.cs" />
     <Compile Include="yumeUI\NodeType.cs" />
+    <Compile Include="yumeUI\Positions.cs" />
     <Compile Include="yumeUI\RootNode.cs" />
     <Compile Include="yumeUI\Style.cs" />
   </ItemGroup>
