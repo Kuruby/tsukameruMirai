@@ -59,7 +59,14 @@
     <Compile Include="BaseObjects\GameObject.cs" />
     <Compile Include="BaseObjects\GameProp.cs" />
     <Compile Include="Components\ControlComponent.cs" />
+    <Compile Include="Components\Controllers\DesktopInputController.cs" />
     <Compile Include="GameObjects\Player.cs" />
+    <Compile Include="Input\DirectInput\ConsoleDirectInput.cs" />
+    <Compile Include="Input\DirectInput\DesktopDirectInput.cs" />
+    <Compile Include="Input\DirectInput\DirectInput.cs" />
+    <Compile Include="Input\InputActions\InputAction.cs" />
+    <Compile Include="Input\InputActions\KeyboardAction.cs" />
+    <Compile Include="Input\InputActions\MouseButtonAction.cs" />
     <Compile Include="YumeCamera\Camera.cs" />
     <Compile Include="YumeCamera\CameraViewType.cs" />
     <Compile Include="Components\AnimatedDrawComponent.cs" />

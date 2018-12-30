@@ -61,7 +61,7 @@ namespace yumeTakusan
 
         protected override void Update(GameTime gameTime)
         {
-
+            p.Update(gameTime);
             base.Update(gameTime);
         }
 

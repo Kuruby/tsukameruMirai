@@ -16,7 +16,7 @@ using yumeTakusan.ContentManagment;
 
 namespace yumeTakusan.Desktop
 {
-    public class DesktopContentStorageManager : ContentStorageManager
+    public sealed class DesktopContentStorageManager : ContentStorageManager
     {
 
         public DesktopContentStorageManager(ContentManager Content) : base(Content) { }

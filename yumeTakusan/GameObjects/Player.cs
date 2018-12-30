@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using yumeTakusan.BaseObjects;
 using yumeTakusan.Components;
 using yumeTakusan.YumeCamera;
+using yumeTakusan.Components.Controllers;
 
 namespace yumeTakusan.GameObjects
 {
@@ -19,14 +20,17 @@ namespace yumeTakusan.GameObjects
         {
             drawComponent = new DrawComponent(this);
             physicsComponent = new PhysicsComponent(this);
+            controlComponent = new DesktopInputController(this);
         }
 
         DrawComponent drawComponent;
         PhysicsComponent physicsComponent;
+        ControlComponent controlComponent;
 
 
         public override void Update(GameTime gameTime)
         {
+            controlComponent.Update(gameTime);
             physicsComponent.Update(gameTime);
         }
 
