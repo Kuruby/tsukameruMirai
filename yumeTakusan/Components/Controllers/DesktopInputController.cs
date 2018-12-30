@@ -23,6 +23,7 @@ namespace yumeTakusan.Components.Controllers
         public DesktopInputController(IMovable controlledObject) : base(controlledObject)
         {
             input.SetDirectionalKeys(Keys.A, Keys.D, Keys.W, Keys.S);
+            input.registerAction("a", Keys.Q);
         }
 
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Input;
+using yumeTakusan.Input.InputActions;
 
 namespace yumeTakusan.Input.DirectInput
 {
@@ -64,11 +65,13 @@ namespace yumeTakusan.Input.DirectInput
                 upDownMove += 1;
             }
 
-
             //Update values
-            foreach (var idkwhatthisisuntilidebug in boundActions)
+            foreach (var pair in boundActions)
             {
-
+                if (pair.Value is KeyboardAction)
+                {
+                    actionResults[pair.Key] = (pair.Value as KeyboardAction).isActionTriggered(keyboardState, pastKeyboardState);
+                }
             }
         }
 
