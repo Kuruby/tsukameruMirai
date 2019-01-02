@@ -9,6 +9,7 @@ using yumeTakusan.Components;
 using yumeTakusan.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using yumeTakusan.Input.InputActions.shims;
 
 namespace yumeTakusan.Components.Controllers
 {
@@ -16,7 +17,7 @@ namespace yumeTakusan.Components.Controllers
     {
         const float pixelSpeed = 5;
 
-        DesktopDirectInput input = new DesktopDirectInput();
+        UnifiedSinglePlayerDirectInput input = new UnifiedSinglePlayerDirectInput();
 
         public DesktopInputController() : this(null) { }
 
@@ -24,6 +25,8 @@ namespace yumeTakusan.Components.Controllers
         {
             input.SetDirectionalKeys(Keys.A, Keys.D, Keys.W, Keys.S);
             input.registerAction("a", Keys.Q);
+            input.registerAction("b", MouseButtons.Left);
+            input.registerAction("c", Buttons.X);
         }
 
 
@@ -32,6 +35,18 @@ namespace yumeTakusan.Components.Controllers
             input.Update();
             controlled.Velocity = Vector2.Zero;
             applyMovementChange(input.LeftRightMove * pixelSpeed, input.UpDownMove * pixelSpeed);
+            if (input.getActionResult("a"))
+            {
+                Console.WriteLine("Q");
+            }
+            if (input.getActionResult("b"))
+            {
+                Console.WriteLine("Left");
+            }
+            if (input.getActionResult("c"))
+            {
+                Console.WriteLine("X");
+            }
         }
     }
 }

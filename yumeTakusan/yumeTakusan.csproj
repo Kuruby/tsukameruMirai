@@ -61,12 +61,15 @@
     <Compile Include="Components\ControlComponent.cs" />
     <Compile Include="Components\Controllers\DesktopInputController.cs" />
     <Compile Include="GameObjects\Player.cs" />
-    <Compile Include="Input\DirectInput\ConsoleDirectInput.cs" />
-    <Compile Include="Input\DirectInput\DesktopDirectInput.cs" />
     <Compile Include="Input\DirectInput\DirectInput.cs" />
+    <Compile Include="Input\DirectInput\MultiGamePadInput.cs" />
+    <Compile Include="Input\DirectInput\SingleGamePadDirectInput.cs" />
+    <Compile Include="Input\DirectInput\UnifiedSinglePlayerDirectInput.cs" />
+    <Compile Include="Input\InputActions\ControllerButtonAction.cs" />
     <Compile Include="Input\InputActions\InputAction.cs" />
     <Compile Include="Input\InputActions\KeyboardAction.cs" />
     <Compile Include="Input\InputActions\MouseButtonAction.cs" />
+    <Compile Include="Input\InputActions\shims\MouseButtons.cs" />
     <Compile Include="YumeCamera\Camera.cs" />
     <Compile Include="YumeCamera\CameraViewType.cs" />
     <Compile Include="Components\AnimatedDrawComponent.cs" />

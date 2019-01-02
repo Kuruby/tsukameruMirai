@@ -10,7 +10,17 @@ namespace yumeTakusan.Input.DirectInput
     public abstract class DirectInput
     {
         public abstract void initialize();
-        public abstract void Update();
+        public virtual void Update()
+        {
+            UpdateActions();
+            UpdateAxes();
+        }
+
+        public abstract void UpdateAxes();
+
+        public abstract void UpdateActions();
+
+
 
         protected float leftRightMove;
         protected float upDownMove;
@@ -26,7 +36,7 @@ namespace yumeTakusan.Input.DirectInput
         public bool registerAction(string name, InputAction action)
         {
             //If there's a collision for either value return failure
-            if (boundActions.ContainsKey(name) || boundActions.ContainsValue(action))
+            if (boundActions.ContainsValue(action))
             {
                 return false;
             }

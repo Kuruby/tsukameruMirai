@@ -27,9 +27,8 @@ namespace yumeTakusan.GameObjects
         PhysicsComponent physicsComponent;
         ControlComponent controlComponent;
 
-
         public override void Update(GameTime gameTime)
-        {
+        {       
             controlComponent.Update(gameTime);
             physicsComponent.Update(gameTime);
         }
@@ -37,6 +36,6 @@ namespace yumeTakusan.GameObjects
         public override void Draw(SpriteBatch spriteBatch, Camera camera, GameTime gameTime, float layerDepth)
         {
             drawComponent.Draw(spriteBatch, camera, gameTime, layerDepth);
-        }
+        } 
     }
 }

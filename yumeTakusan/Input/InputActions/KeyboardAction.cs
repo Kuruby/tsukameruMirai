@@ -53,21 +53,20 @@ namespace yumeTakusan.Input.InputActions
             {
                 return true;
             }
+
+            //Check if the past state is the opposite of the present one.
+            if ((triggerState == KeyState.Down && pastKeyboardState.IsKeyUp(key))
+            || (triggerState == KeyState.Up && pastKeyboardState.IsKeyDown(key)))
+            {
+                //If it is, return that it has been triggered.
+                return true;
+            }
+            //If it hasn't changed it's not triggered.
             else
             {
-                //Check if the past state is the opposite of the present one.
-                if ((triggerState == KeyState.Down && pastKeyboardState.IsKeyUp(key))
-                || (triggerState == KeyState.Up && pastKeyboardState.IsKeyDown(key)))
-                {
-                    //If it is, return that it has been triggered.
-                    return true;
-                }
-                //If it hasn't changed it's not triggered.
-                else
-                {
-                    return false;
-                }
+                return false;
             }
+
         }
 
     }
