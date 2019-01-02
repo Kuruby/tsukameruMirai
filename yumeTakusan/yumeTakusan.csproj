@@ -58,6 +58,7 @@
     <Compile Include="BaseObjects\CollideableGameObject.cs" />
     <Compile Include="BaseObjects\GameObject.cs" />
     <Compile Include="BaseObjects\GameProp.cs" />
+    <Compile Include="BaseObjects\Zone.cs" />
     <Compile Include="Components\ControlComponent.cs" />
     <Compile Include="Components\Controllers\DesktopInputController.cs" />
     <Compile Include="GameObjects\Player.cs" />

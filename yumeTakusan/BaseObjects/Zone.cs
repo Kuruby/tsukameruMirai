@@ -3,34 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
 using yumeTakusan.Interfaces;
 using yumeTakusan.Extensions;
-using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace yumeTakusan.BaseObjects
 {
     /// <summary>
-    /// A game object implementing ICollidable as well as everything else in GameObject 
-    /// (IDrawable, IWorldExistence, IMovable, IUpdatable)
+    /// A Zone defines a region of space in the 2D game plane.
     /// </summary>
-    public abstract class CollideableGameObject : GameObject, ICollidable
+    public abstract class Zone : GameProp, ICollidable
     {
         /// <summary>
-        /// Default Constructor for CollideableGameObject
+        /// Default Constructor for a Zone
         /// </summary>
-        /// <param name="Texture">Texture to be displayed for the object</param>
-        /// <param name="Hitbox">The hitbox of the object</param>
-        /// <param name="Colour">Colour the object is displayed as.</param>
-        /// <param name="Effects">How the object is flipped</param>
-        /// <param name="Visible">Whether the object can be seen</param>
-        /// <param name="Location">Where the object is</param>
-        public CollideableGameObject(Texture2D Texture, Rectangle Hitbox, Color? Colour = null, SpriteEffects Effects = SpriteEffects.None,
-            bool Visible = true, Vector2 Location = default(Vector2)) : base(Texture, Colour, Effects, Visible, Location)
+        /// <param name="Hitbox">The rectangle that defines how large the zone is</param>
+        /// <param name="Location">Where the zone is in the world</param>
+        public Zone(Rectangle Hitbox, Vector2 Location = default(Vector2)) : base(Location)
         {
             hitbox = Hitbox;
         }
-
 
         /// <summary>
         /// A rectangle representing the space the object takes up
@@ -117,6 +109,5 @@ namespace yumeTakusan.BaseObjects
             get => location.Y;
             set { location.Y = value; RecalculateWorldHitbox(); }
         }
-
     }
 }
