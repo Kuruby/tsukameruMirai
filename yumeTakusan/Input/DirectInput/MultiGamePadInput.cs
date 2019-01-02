@@ -7,9 +7,11 @@ using Microsoft.Xna.Framework.Input;
 
 namespace yumeTakusan.Input.DirectInput
 {
+    /// <summary>
+    /// Input for more than one controller or gamepad : Not yet implemented
+    /// </summary>
     public sealed class MultiGamePadInput : DirectInput
     {
-
         public MultiGamePadInput()
         {
             throw new NotImplementedException();

@@ -8,8 +8,17 @@ using yumeTakusan.Input.InputActions.shims;
 
 namespace yumeTakusan.Input.InputActions
 {
+    /// <summary>
+    /// Action on mouse button
+    /// </summary>
     public class MouseButtonAction : InputAction
     {
+        /// <summary>
+        /// Creates mouse button action on specified button
+        /// </summary>
+        /// <param name="Button">Mouse button to watch for</param>
+        /// <param name="CanHold">Whether the action repeats</param>
+        /// <param name="TriggerState">State in which the action triggers</param>
         public MouseButtonAction(MouseButtons Button, bool CanHold = false, ButtonState TriggerState = ButtonState.Pressed)
         {
             button = Button;
@@ -17,14 +26,35 @@ namespace yumeTakusan.Input.InputActions
             triggerState = TriggerState;
         }
 
+        /// <summary>
+        /// Creates mouse button action on specified button
+        /// </summary>
+        /// <param name="Button">Mouse button to watch for</param>
+        /// <param name="TriggerState">State in which the action triggers</param>
+        /// <param name="CanHold">Whether the action repeats</param>
         public MouseButtonAction(MouseButtons Button, ButtonState TriggerState, bool CanHold = false) : this(Button, CanHold, TriggerState) { }
 
+        /// <summary>
+        /// Button to watch for action on
+        /// </summary>
         MouseButtons button;
 
+        /// <summary>
+        /// Whether the action repeats
+        /// </summary>
         bool canHold;
 
+        /// <summary>
+        /// State in which the action triggers: On entering if not repeating, in state if repeats
+        /// </summary>
         ButtonState triggerState;
 
+        /// <summary>
+        /// Checks if the action was triggered this frame
+        /// </summary>
+        /// <param name="mouseState">Mouse state this frame</param>
+        /// <param name="pastMouseState">Mouse state last frame</param>
+        /// <returns>Whether the action was triggered this frame</returns>
         public bool isActionTriggered(MouseState mouseState, MouseState pastMouseState)
         {
             ButtonState currentState = ButtonState.Released;

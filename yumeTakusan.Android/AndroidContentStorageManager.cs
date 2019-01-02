@@ -18,23 +18,40 @@ using Android.Content.Res;
 
 namespace yumeTakusan.Android
 {
-
+    /// <summary>
+    /// Storage manager for content on android
+    /// </summary>
     class AndroidContentStorageManager:ContentStorageManager
     {
+        /// <summary>
+        /// Creates it with an android assetmanager
+        /// </summary>
+        /// <param name="Content">Contentmanager for the content in xna</param>
+        /// <param name="AssetManager">for loading android content</param>
         public AndroidContentStorageManager(ContentManager Content,AssetManager AssetManager):base(Content)
         {
             assetManager = AssetManager;
         }
 
+        /// <summary>
+        /// Assetmanager for loading android content
+        /// </summary>
         AssetManager assetManager;
 
-
+        /// <summary>
+        /// Gets all descriptors in the android descriptors file
+        /// </summary>
+        /// <returns>List of all content descriptors</returns>
         protected override List<Descriptor> GetAllDescriptors()
         {
             string jsonDescriptors = new StreamReader(assetManager.Open("descriptors/descriptors.lmjson")).ReadToEnd();
             return JsonConvert.DeserializeObject<Descriptor[]>($"[{jsonDescriptors}]").ToList();
         }
 
+        /// <summary>
+        /// Returns the XML content from a descriptor
+        /// </summary>
+        /// <param name="descriptor">Descriptor to get content from</param>
         protected override void GetXmlContentFromDescriptor(Descriptor descriptor)
         {
             if (descriptor.datatype != "xml")
@@ -59,6 +76,10 @@ namespace yumeTakusan.Android
             }
         }
 
+        /// <summary>
+        /// Returns the XNB content from a descriptor
+        /// </summary>
+        /// <param name="descriptor">Descriptor to get content from</param>
         protected override void GetXnbContentFromDescriptor(Descriptor descriptor)
         {
             if (descriptor.datatype != "xnb")

@@ -7,9 +7,17 @@ using Microsoft.Xna.Framework.Input;
 
 namespace yumeTakusan.Input.InputActions
 {
+    /// <summary>
+    /// Input action for key on keyboard
+    /// </summary>
     public class KeyboardAction : InputAction
     {
-
+        /// <summary>
+        /// Creates keyboard action from key
+        /// </summary>
+        /// <param name="Key">Key to watch for</param>
+        /// <param name="CanHold">Whether the action repeats</param>
+        /// <param name="TriggerState">State in which the action is triggered</param>
         public KeyboardAction(Keys Key, bool CanHold = false, KeyState TriggerState = KeyState.Down)
         {
             key = Key;
@@ -17,11 +25,24 @@ namespace yumeTakusan.Input.InputActions
             triggerState = TriggerState;
         }
 
+        /// <summary>
+        /// Creates keyboard action from key
+        /// </summary>
+        /// <param name="Key">Key to watch for</param>
+        /// <param name="TriggerState">State in which the action is triggered</param>
+        /// <param name="CanHold">Whether the action repeats</param>
         public KeyboardAction(Keys Key, KeyState TriggerState, bool CanHold = false) : this(Key, CanHold, TriggerState) { }
 
+        /// <summary>
+        /// Key to watch for
+        /// </summary>
         Keys key;
 
+        /// <summary>
+        /// Whether it repeats
+        /// </summary>
         bool canHold;
+
         /// <summary>
         /// event triggers upon entering the state if not held and if in the state if held
         /// </summary>
@@ -30,8 +51,8 @@ namespace yumeTakusan.Input.InputActions
         /// <summary>
         /// Given the past and present keyboard states, determine if the action has been triggered
         /// </summary>
-        /// <param name="keyboardState"></param>
-        /// <param name="pastKeyboardState"></param>
+        /// <param name="keyboardState">State of keyboard this frame</param>
+        /// <param name="pastKeyboardState">State of keyboard last frame</param>
         /// <returns></returns>
         public bool isActionTriggered(KeyboardState keyboardState, KeyboardState pastKeyboardState)
         {

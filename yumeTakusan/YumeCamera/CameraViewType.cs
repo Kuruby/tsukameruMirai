@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace yumeTakusan.YumeCamera
 {
+    /// <summary>
+    /// Types of camera views
+    /// </summary>
     public enum CameraViewType
     {
         Sidescroller,

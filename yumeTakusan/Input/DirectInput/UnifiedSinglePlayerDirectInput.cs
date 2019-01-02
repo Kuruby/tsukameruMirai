@@ -8,23 +8,33 @@ using yumeTakusan.Input.InputActions;
 
 namespace yumeTakusan.Input.DirectInput
 {
+    /// <summary>
+    /// Multiple input methods for singleplayer
+    /// </summary>
     public sealed class UnifiedSinglePlayerDirectInput : DirectInput
     {
-
+        /// <summary>
+        /// Prepares the initial state
+        /// </summary>
         public override void initialize()
         {
             //Initialize the keyboard and mouse state by getting them
             keyboardState = Keyboard.GetState();
             mouseState = Mouse.GetState();
 
-            //Initialize gamepad state and if it was connected
+            //Initialize gamepad state
             gamePadState = GamePad.GetState(gamepadnumber);
         }
 
 
 
-        //Present and past state of keyboard
+        /// <summary>
+        /// Present state of keyboard
+        /// </summary>
         KeyboardState keyboardState;
+        /// <summary>
+        /// Past state of keyboard
+        /// </summary>
         KeyboardState pastKeyboardState;
 
         /// <summary>
@@ -37,14 +47,18 @@ namespace yumeTakusan.Input.DirectInput
         MouseState pastMouseState;
 
         /// <summary>
-        /// the number of the gamepad which is connected for a single player
+        /// the number of the gamepad which is connected for a single player: by default compile 0, the first one
         /// </summary>
         const int gamepadnumber = 0;
 
         /// <summary>
-        /// Present & past state of gamepad
+        /// Current gamepad state
         /// </summary>
-        GamePadState gamePadState, pastGamePadState;
+        GamePadState gamePadState;
+        /// <summary>
+        /// Past gamepad state
+        /// </summary>
+        GamePadState pastGamePadState;
 
         /// <summary>
         /// whether or not the gamepad is connected in the current state
@@ -56,6 +70,13 @@ namespace yumeTakusan.Input.DirectInput
         /// </summary>
         Keys leftKey, rightKey, upKey, downKey;
 
+        /// <summary>
+        /// Sets the keys for the axes
+        /// </summary>
+        /// <param name="left">Key pressed for left</param>
+        /// <param name="right">Key pressed for right</param>
+        /// <param name="up">Key pressed for up</param>
+        /// <param name="down">Key pressed for down</param>
         public void SetDirectionalKeys(Keys left, Keys right, Keys up, Keys down)
         {
             leftKey = left;
@@ -64,6 +85,9 @@ namespace yumeTakusan.Input.DirectInput
             downKey = down;
         }
 
+        /// <summary>
+        /// Updates the input
+        /// </summary>
         public override void Update()
         {
             //update keyboard state
@@ -81,6 +105,9 @@ namespace yumeTakusan.Input.DirectInput
             base.Update();
         }
 
+        /// <summary>
+        /// Updates the state of the axes using controller and keys
+        /// </summary>
         public override void UpdateAxes()
         {
             //Update the left/right and up/down keystates
@@ -114,6 +141,9 @@ namespace yumeTakusan.Input.DirectInput
             }
         }
 
+        /// <summary>
+        /// Updates the actions for keyboard, mouse and controller
+        /// </summary>
         public override void UpdateActions()
         {
             //Update values
@@ -123,6 +153,7 @@ namespace yumeTakusan.Input.DirectInput
                 {
                     actionResults[pair.Key] = (pair.Value as KeyboardAction).isActionTriggered(keyboardState, pastKeyboardState);
                 }
+
                 if (pair.Value is MouseButtonAction)
                 {
                     actionResults[pair.Key] = (pair.Value as MouseButtonAction).isActionTriggered(mouseState, pastMouseState);
@@ -131,17 +162,6 @@ namespace yumeTakusan.Input.DirectInput
                 if (pair.Value is ControllerButtonAction)
                 {
                     actionResults[pair.Key] = (pair.Value as ControllerButtonAction).isActionTriggered(gamePadState, pastGamePadState);
-                }
-
-            }
-            if (GamePadIsActive)
-            {
-                foreach (var pair in boundActions)
-                {
-                    if (pair.Value is ControllerButtonAction)
-                    {
-                        actionResults[pair.Key] = (pair.Value as ControllerButtonAction).isActionTriggered(gamePadState, pastGamePadState);
-                    }
                 }
             }
         }

@@ -16,13 +16,22 @@ using yumeTakusan.ContentManagment;
 
 namespace yumeTakusan.Desktop
 {
+    /// <summary>
+    /// Stores content using methods specifically do desktop
+    /// </summary>
     public sealed class DesktopContentStorageManager : ContentStorageManager
     {
-
+        /// <summary>
+        /// Create a desktop storage manager
+        /// </summary>
+        /// <param name="Content"></param>
         public DesktopContentStorageManager(ContentManager Content) : base(Content) { }
 
 
-
+        /// <summary>
+        /// Gets all descriptors in the /descriptors/ folder and subfolders
+        /// </summary>
+        /// <returns>List of descriptors in the descriptors folder</returns>
         protected override List<Descriptor> GetAllDescriptors()
         {
             List<Descriptor> list = new List<Descriptor>();
@@ -47,7 +56,10 @@ namespace yumeTakusan.Desktop
             return list;
         }
 
-
+        /// <summary>
+        /// Gets XML content from a descriptor
+        /// </summary>
+        /// <param name="descriptor">Descriptor to get content from</param>
         protected override void GetXmlContentFromDescriptor(Descriptor descriptor)
         {
             if (descriptor.datatype != "xml")
@@ -72,7 +84,10 @@ namespace yumeTakusan.Desktop
             }
         }
 
-
+        /// <summary>
+        /// Gets XNB content from a descriptor
+        /// </summary>
+        /// <param name="descriptor">Descriptor to get content from</param>
         protected override void GetXnbContentFromDescriptor(Descriptor descriptor)
         {
             if (descriptor.datatype != "xnb")

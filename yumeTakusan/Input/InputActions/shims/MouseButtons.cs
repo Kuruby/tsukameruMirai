@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace yumeTakusan.Input.InputActions.shims
 {
+    /// <summary>
+    /// Buttons on a mouse
+    /// </summary>
     public enum MouseButtons
     {
         Left,

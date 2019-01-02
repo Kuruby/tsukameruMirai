@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace yumeTakusan.yumeUI
 {
+    /// <summary>
+    /// positions an element can be in
+    /// </summary>
     public enum Positions
     {
-     _relative,
-     _static//extra s to make it not keyword
-        
+        _relative,
+        _static
     }
 }

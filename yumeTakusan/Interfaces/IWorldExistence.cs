@@ -12,8 +12,17 @@ namespace yumeTakusan.Interfaces
     /// </summary>
     public interface IWorldExistence
     {
+        /// <summary>
+        /// The location at which the object exists in the plane
+        /// </summary>
         Vector2 Location { get; set; }
+        /// <summary>
+        /// The X Component of the location of the object
+        /// </summary>
         float LocationXComponent { get; set; }
+        /// <summary>
+        /// The Y Component of the location of the object
+        /// </summary>
         float LocationYComponent { get; set; }
     }
 }

@@ -10,15 +10,27 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace yumeTakusan.yumeUI
 {
+    /// <summary>
+    /// The root node for a UI structure
+    /// </summary>
     [XmlRoot("root")]
     public class RootNode
     {
+        /// <summary>
+        /// The first node inside this one
+        /// </summary>
         [XmlElement]
         public ElementNode node;
 
+        /// <summary>
+        /// Style for the root node
+        /// </summary>
         [XmlAttribute("style")]
         private Style style = new Style(5,0,0,Positions._static);
 
+        /// <summary>
+        /// String of style for XML encoding
+        /// </summary>
         [XmlAttribute("style")]
         public string styleString
         {
@@ -32,14 +44,24 @@ namespace yumeTakusan.yumeUI
             }
         }
 
+        /// <summary>
+        /// Pixel for drawing
+        /// </summary>
         [XmlIgnore]
         public static Texture2D pixel;
 
+        /// <summary>
+        /// creates and empty root node
+        /// </summary>
         public RootNode()
         {
             node = new ElementNode(style);
         }
 
+        /// <summary>
+        /// Turns this UI structure into a string
+        /// </summary>
+        /// <returns>XML version of this UI structure</returns>
         public string Serialize()
         {
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(RootNode));
@@ -48,13 +70,22 @@ namespace yumeTakusan.yumeUI
             return stringWriter.ToString();
         }
 
-
+        /// <summary>
+        /// Gets a UI structure from XML string
+        /// </summary>
+        /// <param name="xml">XML as string</param>
+        /// <returns>UI structure in the xml</returns>
         public static RootNode DeSerialize(string xml)
         {
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(RootNode));
             return (RootNode)xmlSerializer.Deserialize(new MemoryStream(Encoding.Unicode.GetBytes("\ufeff" + xml)));
         }
 
+        /// <summary>
+        /// Draws this UI
+        /// </summary>
+        /// <param name="gameTime">Timing values</param>
+        /// <param name="spriteBatch">Sprite batch to use for drawing</param>
         public void Draw(GameTime gameTime,SpriteBatch spriteBatch)
         {
             

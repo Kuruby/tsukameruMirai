@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace yumeTakusan.yumeUI
 {
-    public enum NodeType
+    /// <summary>
+    /// Represents an internal node of an element
+    /// </summary>
+    public abstract class InternalNode
     {
-        node
     }
 }

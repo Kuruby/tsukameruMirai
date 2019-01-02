@@ -11,6 +11,9 @@ namespace yumeTakusan.Android
 {
     public class yumeGameAndroid:yumeGame
     {
+        /// <summary>
+        /// Creates a yumeGame for android, using android screen as well as android content storage
+        /// </summary>
         public yumeGameAndroid() : base()
         {
             graphics.IsFullScreen = true;

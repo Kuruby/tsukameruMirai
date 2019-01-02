@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace yumeTakusan.Input.DirectInput
 {
+    /// <summary>
+    /// Input for a single gamepad: not yet implemented
+    /// </summary>
     class SingleGamePadDirectInput : DirectInput
     {
         public override void initialize()

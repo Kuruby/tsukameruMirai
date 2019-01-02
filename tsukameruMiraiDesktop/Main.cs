@@ -1,14 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using yumeTakusan;
+using yumeTakusan.Desktop;
 
 namespace tsukameruMiraiDesktop
 {
-    /// <summary>
-    /// This is the main type for your game.
-    /// </summary>
-    public class Main : yumeTakusan.Desktop.yumeGameDesktop
+    public class Main : yumeGameDesktop
     {
         
     }

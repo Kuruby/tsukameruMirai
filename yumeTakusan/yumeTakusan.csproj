@@ -88,7 +88,7 @@
     <Compile Include="YumeExtensions.cs" />
     <Compile Include="yumeGame.cs" />
     <Compile Include="yumeUI\ElementNode.cs" />
-    <Compile Include="yumeUI\NodeType.cs" />
+    <Compile Include="yumeUI\InternalNode.cs" />
     <Compile Include="yumeUI\Positions.cs" />
     <Compile Include="yumeUI\RootNode.cs" />
     <Compile Include="yumeUI\Style.cs" />
