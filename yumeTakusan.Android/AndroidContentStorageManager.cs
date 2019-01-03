@@ -21,14 +21,14 @@ namespace yumeTakusan.Android
     /// <summary>
     /// Storage manager for content on android
     /// </summary>
-    class AndroidContentStorageManager:ContentStorageManager
+    public sealed class AndroidContentStorageManager : ContentStorageManager
     {
         /// <summary>
         /// Creates it with an android assetmanager
         /// </summary>
         /// <param name="Content">Contentmanager for the content in xna</param>
         /// <param name="AssetManager">for loading android content</param>
-        public AndroidContentStorageManager(ContentManager Content,AssetManager AssetManager):base(Content)
+        public AndroidContentStorageManager(ContentManager Content, AssetManager AssetManager) : base(Content)
         {
             assetManager = AssetManager;
         }

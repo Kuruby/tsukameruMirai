@@ -11,7 +11,7 @@ namespace yumeTakusan.Input.DirectInput
     /// <summary>
     /// Multiple input methods for singleplayer
     /// </summary>
-    public sealed class UnifiedSinglePlayerDirectInput : DirectInput
+    public class UnifiedSinglePlayerDirectInput : DirectInput
     {
         /// <summary>
         /// Prepares the initial state

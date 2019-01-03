@@ -5,7 +5,7 @@ using yumeTakusan.Android;
 
 namespace tsukameruMiraiAndroid
 {
-    public class Main : yumeGameAndroid
+    public sealed class Main : yumeGameAndroid
     {
 
     }

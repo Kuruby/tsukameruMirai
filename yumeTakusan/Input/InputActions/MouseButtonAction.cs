@@ -11,7 +11,7 @@ namespace yumeTakusan.Input.InputActions
     /// <summary>
     /// Action on mouse button
     /// </summary>
-    public class MouseButtonAction : InputAction
+    public sealed class MouseButtonAction : InputAction
     {
         /// <summary>
         /// Creates mouse button action on specified button

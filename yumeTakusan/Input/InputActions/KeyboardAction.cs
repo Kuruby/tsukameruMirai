@@ -10,7 +10,7 @@ namespace yumeTakusan.Input.InputActions
     /// <summary>
     /// Input action for key on keyboard
     /// </summary>
-    public class KeyboardAction : InputAction
+    public sealed class KeyboardAction : InputAction
     {
         /// <summary>
         /// Creates keyboard action from key
