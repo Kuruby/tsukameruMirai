@@ -52,10 +52,31 @@ namespace yumeTakusan
         protected Camera camera = new Camera(CameraViewType.Sidescroller);
 
         /// <summary>
+        /// Zero-indexed window bounds
+        /// </summary>
+        protected Rectangle windowBounds;
+
+        /// <summary>
+        /// Zero-indexed window bounds
+        /// </summary>
+        Rectangle WindowBounds => windowBounds;
+
+        /// <summary>
+        /// Update the window rectangle
+        /// </summary>
+        /// <param name="sender">object sending request</param>
+        /// <param name="e">arguments</param>
+        void UpdateWindowRectangle(object sender, EventArgs e)
+        {
+            windowBounds = new Rectangle(0, 0, Window.ClientBounds.Width, Window.ClientBounds.Height);
+        }
+
+        /// <summary>
         /// Initializes the game
         /// </summary>
         protected override void Initialize()
         {
+            Window.ClientSizeChanged += UpdateWindowRectangle;
             base.Initialize();
         }
 
