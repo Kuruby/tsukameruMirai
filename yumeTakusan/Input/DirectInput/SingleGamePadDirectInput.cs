@@ -11,7 +11,7 @@ namespace yumeTakusan.Input.DirectInput
     /// </summary>
     class SingleGamePadDirectInput : DirectInput
     {
-        public override void initialize()
+        public override void Initialize()
         {
             throw new NotImplementedException();
         }

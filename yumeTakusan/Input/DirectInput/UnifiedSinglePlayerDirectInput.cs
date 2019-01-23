@@ -16,7 +16,7 @@ namespace yumeTakusan.Input.DirectInput
         /// <summary>
         /// Prepares the initial state
         /// </summary>
-        public override void initialize()
+        public override void Initialize()
         {
             //Initialize the keyboard and mouse state by getting them
             keyboardState = Keyboard.GetState();
@@ -63,7 +63,7 @@ namespace yumeTakusan.Input.DirectInput
         /// <summary>
         /// whether or not the gamepad is connected in the current state
         /// </summary>
-        bool GamePadIsActive => gamePadState.IsConnected;
+        bool gamePadIsActive => gamePadState.IsConnected;
 
         /// <summary>
         /// keyboard keys for movement directions
@@ -134,7 +134,7 @@ namespace yumeTakusan.Input.DirectInput
             }
 
             //Gamepad has priority
-            if (GamePadIsActive)
+            if (gamePadIsActive)
             {
                 leftRightMove = gamePadState.ThumbSticks.Left.X;
                 upDownMove = -gamePadState.ThumbSticks.Left.Y;
@@ -151,17 +151,17 @@ namespace yumeTakusan.Input.DirectInput
             {
                 if (pair.Value is KeyboardAction)
                 {
-                    actionResults[pair.Key] = (pair.Value as KeyboardAction).isActionTriggered(keyboardState, pastKeyboardState);
+                    actionResults[pair.Key] = (pair.Value as KeyboardAction).IsActionTriggered(keyboardState, pastKeyboardState);
                 }
 
                 if (pair.Value is MouseButtonAction)
                 {
-                    actionResults[pair.Key] = (pair.Value as MouseButtonAction).isActionTriggered(mouseState, pastMouseState);
+                    actionResults[pair.Key] = (pair.Value as MouseButtonAction).IsActionTriggered(mouseState, pastMouseState);
                 }
 
                 if (pair.Value is ControllerButtonAction)
                 {
-                    actionResults[pair.Key] = (pair.Value as ControllerButtonAction).isActionTriggered(gamePadState, pastGamePadState);
+                    actionResults[pair.Key] = (pair.Value as ControllerButtonAction).IsActionTriggered(gamePadState, pastGamePadState);
                 }
             }
         }

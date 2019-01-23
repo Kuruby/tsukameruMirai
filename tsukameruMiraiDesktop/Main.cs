@@ -5,7 +5,7 @@ using yumeTakusan.Desktop;
 
 namespace tsukameruMiraiDesktop
 {
-    public sealed class Main : yumeGameDesktop
+    public sealed class Main : YumeGameDesktop
     {
         
     }

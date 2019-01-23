@@ -7,12 +7,12 @@ using yumeTakusan;
 
 namespace yumeTakusan.Desktop
 {
-    public class yumeGameDesktop:yumeGame
+    public class YumeGameDesktop:YumeGame
     {
         /// <summary>
         /// Creates a yumeGame for desktop, with appropriate content storage management
         /// </summary>
-        public yumeGameDesktop() : base()
+        public YumeGameDesktop() : base()
         {
             content = new DesktopContentStorageManager(Content);
         }

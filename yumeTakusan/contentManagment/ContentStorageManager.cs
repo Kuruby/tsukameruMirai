@@ -42,7 +42,7 @@ namespace yumeTakusan.ContentManagment
         /// <summary>
         /// String access to all the UI windows
         /// </summary>
-        protected Dictionary<string, RootNode> UIStore = new Dictionary<string, RootNode>();
+        protected Dictionary<string, RootNode> uiStore = new Dictionary<string, RootNode>();
 
         /// <summary>
         /// Returns the content identified by the string and type.
@@ -50,7 +50,7 @@ namespace yumeTakusan.ContentManagment
         /// <typeparam name="T">Type of content to be returned</typeparam>
         /// <param name="identifier">The name of the content requested</param>
         /// <returns>Requested content</returns>
-        public object getContent<T>(string identifier)
+        public object GetContent<T>(string identifier)
         {
             string type = typeof(T).ToString();
             switch (type)
@@ -58,7 +58,7 @@ namespace yumeTakusan.ContentManagment
                 case "Microsoft.Xna.Framework.Graphics.Texture2D":
                     return imageStore[identifier];
                 case "yumeTakusan.yumeUI.RootNode":
-                    return UIStore[identifier];
+                    return uiStore[identifier];
                 default:
                     throw new NotImplementedException($"theres no such thing as a {type}");
             }
@@ -68,30 +68,30 @@ namespace yumeTakusan.ContentManagment
         /// gets all the content descriptors
         /// </summary>
         /// <returns></returns>
-        protected abstract List<Descriptor> GetAllDescriptors();
+        protected abstract List<Descriptor> getAllDescriptors();
 
         /// <summary>
         /// loads a texture2d from a descriptor
         /// </summary>
         /// <param name="descriptor">Content to load</param>
-        protected abstract void GetXnbContentFromDescriptor(Descriptor descriptor);
+        protected abstract void getXnbContentFromDescriptor(Descriptor descriptor);
 
         /// <summary>
         /// Loads XML content from a descriptor
         /// </summary>
         /// <param name="descriptor">Content to load</param>
-        protected abstract void GetXmlContentFromDescriptor(Descriptor descriptor);
+        protected abstract void getXmlContentFromDescriptor(Descriptor descriptor);
 
         /// <summary>
         /// Loads all content from descriptors
         /// </summary>
         public void LoadAllContent()
         {
-            var descriptors = GetAllDescriptors();
+            var descriptors = getAllDescriptors();
             //load content for each descriptor
             foreach (Descriptor descriptor in descriptors)
             {
-                LoadContentFromDescriptor(descriptor);
+                loadContentFromDescriptor(descriptor);
             }
         }
 
@@ -99,23 +99,23 @@ namespace yumeTakusan.ContentManagment
         /// Loads content from a descriptor into the correct store
         /// </summary>
         /// <param name="descriptor">Content to load</param>
-        protected void LoadContentFromDescriptor(Descriptor descriptor)
+        protected void loadContentFromDescriptor(Descriptor descriptor)
         { //load the content based on what the datatype and what type it is
           //First, check if if is xnb (monogame) or xml/json/other (text) content
-            switch (descriptor.datatype)
+            switch (descriptor.Datatype)
             {
                 case "xml"://Mostly UI: templated, lang data is set on ui creation
-                    GetXmlContentFromDescriptor(descriptor);
+                    getXmlContentFromDescriptor(descriptor);
                     break;
                 case "xnb"://Various types wrapped in Monogame/XNA's content wrapper
-                    GetXnbContentFromDescriptor(descriptor);
+                    getXnbContentFromDescriptor(descriptor);
                     break;
                 case "json":
                     throw new NotImplementedException("json support not yet added");
                 case "text":
                     throw new NotImplementedException("text support not yet added");
                 default:
-                    throw new NotImplementedException($"theres no such thing as a {descriptor.datatype}");
+                    throw new NotImplementedException($"theres no such thing as a {descriptor.Datatype}");
             }
         }
     }

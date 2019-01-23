@@ -56,7 +56,7 @@ namespace yumeTakusan.Input.InputActions
         /// <param name="gamePadState">State of gamepad this frame</param>
         /// <param name="pastGamePadState">State of gamepad last frame</param>
         /// <returns>Whether the action is triggered this frame</returns>
-        public bool isActionTriggered(GamePadState gamePadState, GamePadState pastGamePadState)
+        public bool IsActionTriggered(GamePadState gamePadState, GamePadState pastGamePadState)
         {
             if (gamePadState.IsConnected &&
                 ((triggerState == ButtonState.Pressed && gamePadState.IsButtonDown(button))

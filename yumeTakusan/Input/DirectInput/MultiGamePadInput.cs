@@ -17,7 +17,7 @@ namespace yumeTakusan.Input.DirectInput
             throw new NotImplementedException();
         }
 
-        public override void initialize()
+        public override void Initialize()
         {
             throw new NotImplementedException();
         }

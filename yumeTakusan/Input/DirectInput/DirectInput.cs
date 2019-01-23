@@ -15,7 +15,7 @@ namespace yumeTakusan.Input.DirectInput
         /// <summary>
         /// Initializes the input component
         /// </summary>
-        public abstract void initialize();
+        public abstract void Initialize();
 
         /// <summary>
         /// Updates the state of the input
@@ -69,7 +69,7 @@ namespace yumeTakusan.Input.DirectInput
         /// </summary>
         /// <param name="action">name of the action</param>
         /// <returns>Whether the action was executed on the last update</returns>
-        public bool getActionResult(string action) => actionResults[action];
+        public bool GetActionResult(string action) => actionResults[action];
 
         /// <summary>
         /// Adds an action to the actions checked for
@@ -77,7 +77,7 @@ namespace yumeTakusan.Input.DirectInput
         /// <param name="name">name of the action</param>
         /// <param name="action">Action that is checked for</param>
         /// <returns>whether it was correctly registered</returns>
-        public bool registerAction(string name, InputAction action)
+        public bool RegisterAction(string name, InputAction action)
         {
             //If there's a collision for either value return failure
             if (boundActions.ContainsKey(name) || boundActions.ContainsValue(action))
@@ -95,7 +95,7 @@ namespace yumeTakusan.Input.DirectInput
         /// Removes an action
         /// </summary>
         /// <param name="name">Name of action to remove</param>
-        public void removeAction(string name)
+        public void RemoveAction(string name)
         {
             if (actionResults.ContainsKey(name))
                 actionResults.Remove(name);

@@ -42,7 +42,7 @@ namespace yumeTakusan.Android
         /// Gets all descriptors in the android descriptors file
         /// </summary>
         /// <returns>List of all content descriptors</returns>
-        protected override List<Descriptor> GetAllDescriptors()
+        protected override List<Descriptor> getAllDescriptors()
         {
             string jsonDescriptors = new StreamReader(assetManager.Open("descriptors/descriptors.lmjson")).ReadToEnd();
             return JsonConvert.DeserializeObject<Descriptor[]>($"[{jsonDescriptors}]").ToList();
@@ -52,13 +52,13 @@ namespace yumeTakusan.Android
         /// Returns the XML content from a descriptor
         /// </summary>
         /// <param name="descriptor">Descriptor to get content from</param>
-        protected override void GetXmlContentFromDescriptor(Descriptor descriptor)
+        protected override void getXmlContentFromDescriptor(Descriptor descriptor)
         {
-            if (descriptor.datatype != "xml")
+            if (descriptor.Datatype != "xml")
                 throw new InvalidOperationException("bad datatype");
 
             Type type = typeof(object);
-            switch (descriptor.type)
+            switch (descriptor.Type)
             {
                 case "ui":
                     type = typeof(RootNode);
@@ -66,12 +66,12 @@ namespace yumeTakusan.Android
             }
 
             XmlSerializer xmlSerializer = new XmlSerializer(type);
-            object data = xmlSerializer.Deserialize(assetManager.Open("Content" + Path.DirectorySeparatorChar + descriptor.path));
+            object data = xmlSerializer.Deserialize(assetManager.Open("Content" + Path.DirectorySeparatorChar + descriptor.Path));
 
-            switch (descriptor.type)
+            switch (descriptor.Type)
             {
                 case "ui":
-                    UIStore.Add(descriptor.identifier, (RootNode)data);
+                    uiStore.Add(descriptor.Identifier, (RootNode)data);
                     break;
             }
         }
@@ -80,22 +80,22 @@ namespace yumeTakusan.Android
         /// Returns the XNB content from a descriptor
         /// </summary>
         /// <param name="descriptor">Descriptor to get content from</param>
-        protected override void GetXnbContentFromDescriptor(Descriptor descriptor)
+        protected override void getXnbContentFromDescriptor(Descriptor descriptor)
         {
-            if (descriptor.datatype != "xnb")
+            if (descriptor.Datatype != "xnb")
                 throw new InvalidOperationException("bad datatype");
 
-            string path = descriptor.path;
+            string path = descriptor.Path;
 
             if (path.EndsWith(".xnb"))
                 path = path.Substring(0, path.Length - 4);
 
-            switch (descriptor.type)
+            switch (descriptor.Type)
             {
                 case "tex2d":
                     Texture2D texture = content.Load<Texture2D>(path);
                     //store
-                    imageStore.Add(descriptor.identifier, texture);
+                    imageStore.Add(descriptor.Identifier, texture);
                     break;
             }
         }

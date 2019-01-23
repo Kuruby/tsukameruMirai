@@ -55,7 +55,7 @@ namespace yumeTakusan.Input.InputActions
         /// <param name="mouseState">Mouse state this frame</param>
         /// <param name="pastMouseState">Mouse state last frame</param>
         /// <returns>Whether the action was triggered this frame</returns>
-        public bool isActionTriggered(MouseState mouseState, MouseState pastMouseState)
+        public bool IsActionTriggered(MouseState mouseState, MouseState pastMouseState)
         {
             ButtonState currentState = ButtonState.Released;
             ButtonState pastState = ButtonState.Released;

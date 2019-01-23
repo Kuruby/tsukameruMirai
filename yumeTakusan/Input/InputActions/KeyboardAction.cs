@@ -54,7 +54,7 @@ namespace yumeTakusan.Input.InputActions
         /// <param name="keyboardState">State of keyboard this frame</param>
         /// <param name="pastKeyboardState">State of keyboard last frame</param>
         /// <returns></returns>
-        public bool isActionTriggered(KeyboardState keyboardState, KeyboardState pastKeyboardState)
+        public bool IsActionTriggered(KeyboardState keyboardState, KeyboardState pastKeyboardState)
         {
 
             //If the key is currently in the correct state, do nothing

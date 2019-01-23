@@ -32,7 +32,7 @@ namespace yumeTakusan.Desktop
         /// Gets all descriptors in the /descriptors/ folder and subfolders
         /// </summary>
         /// <returns>List of descriptors in the descriptors folder</returns>
-        protected override List<Descriptor> GetAllDescriptors()
+        protected override List<Descriptor> getAllDescriptors()
         {
             List<Descriptor> list = new List<Descriptor>();
             //check that the file path exists
@@ -60,13 +60,13 @@ namespace yumeTakusan.Desktop
         /// Gets XML content from a descriptor
         /// </summary>
         /// <param name="descriptor">Descriptor to get content from</param>
-        protected override void GetXmlContentFromDescriptor(Descriptor descriptor)
+        protected override void getXmlContentFromDescriptor(Descriptor descriptor)
         {
-            if (descriptor.datatype != "xml")
+            if (descriptor.Datatype != "xml")
                 throw new InvalidOperationException("bad datatype");
 
             Type type = typeof(object);
-            switch (descriptor.type)
+            switch (descriptor.Type)
             {
                 case "ui":
                     type = typeof(RootNode);
@@ -74,12 +74,12 @@ namespace yumeTakusan.Desktop
             }
 
             XmlSerializer xmlSerializer = new XmlSerializer(type);
-            object data = xmlSerializer.Deserialize(new FileStream("Content" + Path.DirectorySeparatorChar + descriptor.path, FileMode.Open));
+            object data = xmlSerializer.Deserialize(new FileStream("Content" + Path.DirectorySeparatorChar + descriptor.Path, FileMode.Open));
 
-            switch (descriptor.type)
+            switch (descriptor.Type)
             {
                 case "ui":
-                    UIStore.Add(descriptor.identifier, (RootNode)data);
+                    uiStore.Add(descriptor.Identifier, (RootNode)data);
                     break;
             }
         }
@@ -88,22 +88,22 @@ namespace yumeTakusan.Desktop
         /// Gets XNB content from a descriptor
         /// </summary>
         /// <param name="descriptor">Descriptor to get content from</param>
-        protected override void GetXnbContentFromDescriptor(Descriptor descriptor)
+        protected override void getXnbContentFromDescriptor(Descriptor descriptor)
         {
-            if (descriptor.datatype != "xnb")
+            if (descriptor.Datatype != "xnb")
                 throw new InvalidOperationException("bad datatype");
 
-            string path = descriptor.path;
+            string path = descriptor.Path;
 
             if (path.EndsWith(".xnb"))
                 path = path.Substring(0, path.Length - 4);
 
-            switch (descriptor.type)
+            switch (descriptor.Type)
             {
                 case "tex2d":
                     Texture2D texture = content.Load<Texture2D>(path);
                     //store
-                    imageStore.Add(descriptor.identifier, texture);
+                    imageStore.Add(descriptor.Identifier, texture);
                     break;
             }
         }

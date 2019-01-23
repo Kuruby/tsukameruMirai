@@ -40,9 +40,9 @@ namespace yumeTakusan.Components.Controllers
         public DesktopInputController(IMovable controlledObject) : base(controlledObject)
         {
             input.SetDirectionalKeys(Keys.A, Keys.D, Keys.W, Keys.S);
-            input.registerAction("a", Keys.Q);
-            input.registerAction("b", MouseButtons.Left);
-            input.registerAction("c", Buttons.X);
+            input.RegisterAction("a", Keys.Q);
+            input.RegisterAction("b", MouseButtons.Left);
+            input.RegisterAction("c", Buttons.X);
         }
 
         /// <summary>
@@ -54,15 +54,15 @@ namespace yumeTakusan.Components.Controllers
             input.Update();
             controlled.Velocity = Vector2.Zero;
             applyMovementChange(input.LeftRightMove * pixelSpeed, input.UpDownMove * pixelSpeed);
-            if (input.getActionResult("a"))
+            if (input.GetActionResult("a"))
             {
                 Console.WriteLine("Q");
             }
-            if (input.getActionResult("b"))
+            if (input.GetActionResult("b"))
             {
                 Console.WriteLine("Left");
             }
-            if (input.getActionResult("c"))
+            if (input.GetActionResult("c"))
             {
                 Console.WriteLine("X");
             }

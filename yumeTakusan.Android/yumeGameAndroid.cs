@@ -9,12 +9,12 @@ using yumeTakusan;
 
 namespace yumeTakusan.Android
 {
-    public class yumeGameAndroid:yumeGame
+    public class YumeGameAndroid:YumeGame
     {
         /// <summary>
         /// Creates a yumeGame for android, using android screen as well as android content storage
         /// </summary>
-        public yumeGameAndroid() : base()
+        public YumeGameAndroid() : base()
         {
             graphics.IsFullScreen = true;
             //Do not set graphics size; tsukameruGame autodetects and will be able to adapt based on this

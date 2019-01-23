@@ -44,7 +44,7 @@ namespace yumeTakusan.BaseObjects
         public Rectangle Hitbox
         {
             get => hitbox;
-            set { hitbox = value; RecalculateWorldHitbox(); }
+            set { hitbox = value; recalculateWorldHitbox(); }
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace yumeTakusan.BaseObjects
         /// <summary>
         /// Recalculates the world hitbox
         /// </summary>
-        private void RecalculateWorldHitbox()
+        private void recalculateWorldHitbox()
         {
             worldHitbox = hitbox.RectangleAtPoint(Location);
         }
@@ -97,7 +97,7 @@ namespace yumeTakusan.BaseObjects
         new public Vector2 Location
         {
             get => location;
-            set { location = value; RecalculateWorldHitbox(); }
+            set { location = value; recalculateWorldHitbox(); }
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace yumeTakusan.BaseObjects
         new public float LocationXComponent
         {
             get => location.X;
-            set { location.X = value; RecalculateWorldHitbox(); }
+            set { location.X = value; recalculateWorldHitbox(); }
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace yumeTakusan.BaseObjects
         new public float LocationYComponent
         {
             get => location.Y;
-            set { location.Y = value; RecalculateWorldHitbox(); }
+            set { location.Y = value; recalculateWorldHitbox(); }
         }
 
     }

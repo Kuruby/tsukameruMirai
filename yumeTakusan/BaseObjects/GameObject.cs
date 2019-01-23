@@ -31,13 +31,13 @@ namespace yumeTakusan.BaseObjects
             texture = Texture;
             color = Colour ?? Color.White;
             effects = Effects;
-            visible = Visible;
+            this.Visible = Visible;
         }
 
         /// <summary>
         /// Whether or not it is visible
         /// </summary>
-        public bool visible = true;
+        public bool Visible = true;
 
         /// <summary>
         /// the spriteeffects or flipping applied to it

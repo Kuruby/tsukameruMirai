@@ -16,7 +16,7 @@ namespace yumeTakusan
     /// <summary>
     /// Default game type for yumeTakusan
     /// </summary>
-    public class yumeGame : Game
+    public class YumeGame : Game
     {
         /// <summary>
         /// Graphics device
@@ -35,7 +35,7 @@ namespace yumeTakusan
         /// <summary>
         /// Creates game
         /// </summary>
-        public yumeGame()
+        public YumeGame()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -98,11 +98,11 @@ namespace yumeTakusan
         //performs initialization once the content is loaded
         protected void InitializeAfterContentLoad()
         {
-            testUI = (RootNode)content.getContent<RootNode>("ui");
-            Texture2D pixel = (Texture2D)content.getContent<Texture2D>("pixel");
+            testUI = (RootNode)content.GetContent<RootNode>("ui");
+            Texture2D pixel = (Texture2D)content.GetContent<Texture2D>("pixel");
             ElementNode.pixel = pixel;
             RootNode.pixel = pixel;
-            p = new Player((Texture2D)content.getContent<Texture2D>("char"), Rectangle.Empty);
+            p = new Player((Texture2D)content.GetContent<Texture2D>("char"), Rectangle.Empty);
         }
 
         /// <summary>
