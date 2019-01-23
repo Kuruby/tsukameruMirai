@@ -1,9 +1,12 @@
+Class names start with capital letters, e.g. TestClass
+Public pieces of a class start with a capital letter, while private or protected ones start with lowercase.
+
 Class/Interface structure:
 
 class
 	constructor
 	fields (int -> enum -> struct -> class -> Interface)
-	   =>Accessors that are public encapsulations of fields go right after the field they do that to
+	    =>Accessors that are public encapsulations of fields go right after the field they do that to
 	Accessors
 	Methods
 
