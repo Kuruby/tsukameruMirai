@@ -10,6 +10,7 @@ using yumeTakusan.YumeCamera;
 using yumeTakusan.GameObjects;
 using yumeTakusan.yumeUI;
 using yumeTakusan;
+using yumeTakusan.Interaction;
 
 namespace yumeTakusan
 {
@@ -95,7 +96,14 @@ namespace yumeTakusan
         /// </summary>
         Player p;
 
-        //performs initialization once the content is loaded
+        /// <summary>
+        /// Interactthingy for testing
+        /// </summary>
+        InteractThingy interactThingy;
+
+        /// <summary>
+        /// performs initialization once the content is loaded
+        /// </summary>
         protected void InitializeAfterContentLoad()
         {
             testUI = (RootNode)content.GetContent<RootNode>("ui");
@@ -103,6 +111,9 @@ namespace yumeTakusan
             ElementNode.pixel = pixel;
             RootNode.pixel = pixel;
             p = new Player((Texture2D)content.GetContent<Texture2D>("char"), Rectangle.Empty);
+            interactThingy = new InteractThingy((Texture2D)content.GetContent<Texture2D>("pixel"));
+            interactThingy.AddBelowAll(new InteractRectangle(new Rectangle(50, 60, 70, 80)));
+            interactThingy.AddAboveAll(new InteractRectangle(70, 80, 30, 40));
         }
 
         /// <summary>
@@ -128,9 +139,10 @@ namespace yumeTakusan
         {
             GraphicsDevice.Clear(Color.MediumAquamarine);
             testUI.Draw(gameTime, spriteBatch);
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp);
             p.Draw(spriteBatch, new Camera(CameraViewType.Isometric), gameTime, 0f);
             spriteBatch.End();
+            interactThingy.Draw(spriteBatch);
             base.Draw(gameTime);
         }
     }
