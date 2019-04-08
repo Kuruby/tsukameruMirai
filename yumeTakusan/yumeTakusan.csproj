@@ -63,15 +63,8 @@
     <Compile Include="Components\Controllers\DesktopInputController.cs" />
     <Compile Include="Events\Events.cs" />
     <Compile Include="GameObjects\Player.cs" />
-    <Compile Include="Input\DirectInput\DirectInput.cs" />
-    <Compile Include="Input\DirectInput\MultiGamePadInput.cs" />
-    <Compile Include="Input\DirectInput\SingleGamePadDirectInput.cs" />
-    <Compile Include="Input\DirectInput\UnifiedSinglePlayerDirectInput.cs" />
-    <Compile Include="Input\InputActions\ControllerButtonAction.cs" />
-    <Compile Include="Input\InputActions\InputAction.cs" />
-    <Compile Include="Input\InputActions\KeyboardAction.cs" />
-    <Compile Include="Input\InputActions\MouseButtonAction.cs" />
-    <Compile Include="Input\InputActions\shims\MouseButtons.cs" />
+    <Compile Include="Input\Patching\Event.cs" />
+    <Compile Include="Input\Patching\PastPresent.cs" />
     <Compile Include="Interaction\InteractRectangle.cs" />
     <Compile Include="Interaction\InteractThingy.cs" />
     <Compile Include="YumeCamera\Camera.cs" />
@@ -97,6 +90,7 @@
     <Compile Include="yumeUI\Style.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Input\Patching\MasterInput.cs" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

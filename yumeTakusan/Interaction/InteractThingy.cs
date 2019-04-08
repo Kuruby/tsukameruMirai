@@ -43,7 +43,9 @@ namespace yumeTakusan.Interaction
         public void AddBelowAll(InteractRectangle interactRectangle)
         {
             interactItems.Add(interactRectangle);
+            
         }
+
 
         /// <summary>
         /// Adds an interact rectangle above all others.

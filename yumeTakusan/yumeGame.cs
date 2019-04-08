@@ -11,6 +11,7 @@ using yumeTakusan.GameObjects;
 using yumeTakusan.yumeUI;
 using yumeTakusan;
 using yumeTakusan.Interaction;
+using yumeTakusan.Input.Patching;
 
 namespace yumeTakusan
 {
@@ -32,6 +33,8 @@ namespace yumeTakusan
         /// Content storage manager for the game
         /// </summary>
         protected ContentStorageManager content;
+
+        protected MasterInput masterInput = new MasterInput();
 
         /// <summary>
         /// Creates game
@@ -78,6 +81,7 @@ namespace yumeTakusan
         protected override void Initialize()
         {
             Window.ClientSizeChanged += UpdateWindowRectangle;
+            IsMouseVisible = true;
             base.Initialize();
         }
 
@@ -112,7 +116,7 @@ namespace yumeTakusan
             RootNode.pixel = pixel;
             p = new Player((Texture2D)content.GetContent<Texture2D>("char"), Rectangle.Empty);
             interactThingy = new InteractThingy((Texture2D)content.GetContent<Texture2D>("pixel"));
-            interactThingy.AddBelowAll(new InteractRectangle(new Rectangle(50, 60, 70, 80)));
+            interactThingy.AddBelowAll(new InteractRectangle(50, 60, 70, 80));
             interactThingy.AddAboveAll(new InteractRectangle(70, 80, 30, 40));
         }
 
@@ -127,6 +131,11 @@ namespace yumeTakusan
         /// <param name="gameTime">Timing values</param>
         protected override void Update(GameTime gameTime)
         {
+            masterInput.Update(gameTime);
+            if(IsActive || false /*should be like Settings.InactivePlay*/)
+            {
+
+            }
             p.Update(gameTime);
             base.Update(gameTime);
         }

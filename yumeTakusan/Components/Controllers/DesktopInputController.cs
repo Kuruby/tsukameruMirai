@@ -3,13 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using yumeTakusan.Input.InputActions;
-using yumeTakusan.Input.DirectInput;
 using yumeTakusan.Components;
 using yumeTakusan.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using yumeTakusan.Input.InputActions.shims;
 
 namespace yumeTakusan.Components.Controllers
 {
@@ -23,10 +20,7 @@ namespace yumeTakusan.Components.Controllers
         /// </summary>
         const float pixelSpeed = 5;
 
-        /// <summary>
-        /// The input controller
-        /// </summary>
-        UnifiedSinglePlayerDirectInput input = new UnifiedSinglePlayerDirectInput();
+        //TODO: add an onInput event here
 
         /// <summary>
         /// Empty constructor: controls no object
@@ -39,10 +33,7 @@ namespace yumeTakusan.Components.Controllers
         /// <param name="controlledObject">Object to be controlled</param>
         public DesktopInputController(IMovable controlledObject) : base(controlledObject)
         {
-            input.SetDirectionalKeys(Keys.A, Keys.D, Keys.W, Keys.S);
-            input.RegisterAction("a", Keys.Q);
-            input.RegisterAction("b", MouseButtons.Left);
-            input.RegisterAction("c", Buttons.X);
+            //shim directional keys?
         }
 
         /// <summary>
@@ -51,21 +42,6 @@ namespace yumeTakusan.Components.Controllers
         /// <param name="gameTime">Timing values</param>
         public override void Update(GameTime gameTime)
         {
-            input.Update();
-            controlled.Velocity = Vector2.Zero;
-            applyMovementChange(input.LeftRightMove * pixelSpeed, input.UpDownMove * pixelSpeed);
-            if (input.GetActionResult("a"))
-            {
-                Console.WriteLine("Q");
-            }
-            if (input.GetActionResult("b"))
-            {
-                Console.WriteLine("Left");
-            }
-            if (input.GetActionResult("c"))
-            {
-                Console.WriteLine("X");
-            }
         }
     }
 }
