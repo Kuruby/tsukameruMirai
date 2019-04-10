@@ -75,19 +75,19 @@ namespace yumeTakusan.Input.Patching
         /// <summary>
         /// Key to trigger on, if it is a key event
         /// </summary>
-        private Keys key;
+        public Keys key { get; private set; }
         /// <summary>
         /// Number of gamepad to trigger to if it is a gamepad event
         /// </summary>
-        private int gamepadNumber;
+        public int gamepadNumber { get; private set; }
         /// <summary>
         /// Button to trigger to, if it is a gamepad event
         /// </summary>
-        private Buttons button;
+        public Buttons button { get; private set; }
         /// <summary>
         /// If the event triggers on any mouse event.
         /// </summary>
-        private bool interceptsMice;
+        public bool interceptsMice { get; private set; }
 
         /// <summary>
         /// When in the event's lifecycle it triggers:
@@ -118,7 +118,7 @@ namespace yumeTakusan.Input.Patching
                 //gamepad path
 
                 //don't deal with disconnected gamepads
-                if(!input.gamePadStates[gamepadNumber].Present.IsConnected || !input.gamePadStates[gamepadNumber].Past.IsConnected)
+                if (!input.gamePadStates[gamepadNumber].Present.IsConnected || !input.gamePadStates[gamepadNumber].Past.IsConnected)
                 {
                     return false;
                 }

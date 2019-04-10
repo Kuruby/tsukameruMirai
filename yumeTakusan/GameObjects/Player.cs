@@ -9,6 +9,7 @@ using yumeTakusan.BaseObjects;
 using yumeTakusan.Components;
 using yumeTakusan.YumeCamera;
 using yumeTakusan.Components.Controllers;
+using yumeTakusan.Input.Patching;
 
 namespace yumeTakusan.GameObjects
 {
@@ -26,12 +27,13 @@ namespace yumeTakusan.GameObjects
         /// <param name="Effects">How the object is flipped</param>
         /// <param name="Visible">Whether the object can be seen</param>
         /// <param name="Location">Where the object is</param>
-        public Player(Texture2D Texture, Rectangle Hitbox, Color? Colour = null, SpriteEffects Effects = SpriteEffects.None,
+        public Player(Texture2D Texture, Rectangle Hitbox, MasterInput input = null, Color? Colour = null, SpriteEffects Effects = SpriteEffects.None,
             bool Visible = true, Vector2 Location = default(Vector2)) : base(Texture, Hitbox, Colour, Effects, Visible, Location)
         {
             drawComponent = new DrawComponent(this);
             physicsComponent = new PhysicsComponent(this);
-            controlComponent = new DesktopInputController(this);
+            if (input != null)
+                controlComponent = new DesktopInputController(this, input);
         }
 
         /// <summary>
@@ -52,7 +54,7 @@ namespace yumeTakusan.GameObjects
         /// </summary>
         /// <param name="gameTime">Timing values</param>
         public override void Update(GameTime gameTime)
-        {       
+        {
             controlComponent.Update(gameTime);
             physicsComponent.Update(gameTime);
         }
@@ -67,6 +69,6 @@ namespace yumeTakusan.GameObjects
         public override void Draw(SpriteBatch spriteBatch, Camera camera, GameTime gameTime, float layerDepth)
         {
             drawComponent.Draw(spriteBatch, camera, gameTime, layerDepth);
-        } 
+        }
     }
 }
