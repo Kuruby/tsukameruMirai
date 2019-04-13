@@ -63,5 +63,12 @@ namespace yumeTakusan.Interaction
         /// </summary>
         public event YTEventHandler Action = delegate { };
 
+        /// <summary>
+        /// Trigger the rectangle's action.
+        /// </summary>
+        public void DoAction()
+        {
+            Action();
+        }
     }
 }

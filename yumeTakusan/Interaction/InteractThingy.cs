@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using yumeTakusan.Input.Patching;
 
 namespace yumeTakusan.Interaction
 {
@@ -14,10 +15,39 @@ namespace yumeTakusan.Interaction
     /// </summary>
     public class InteractThingy
     {
-        public InteractThingy(Texture2D OnePixelWhiteSquare)
+        public InteractThingy(Texture2D OnePixelWhiteSquare, MasterInput MasterInput)
         {
             pixel = OnePixelWhiteSquare;
+            input = MasterInput;
+            //TODO: register handling method for clicks
+            MasterInput.AddEventListener(new Event(true), handleClickIntoInteract, 0);
         }
+
+        /// <summary>
+        /// Stored input
+        /// </summary>
+        MasterInput input;
+
+        public bool handleClickIntoInteract(object clickEvent)
+        {
+            //if the mouse isn't clicked don't care
+            if (!Event.IsLeftMouseTriggered(input))
+            {
+                return false;
+            }
+
+            //check for an interaction with every rect
+            foreach (InteractRectangle InteractItem in interactItems)
+            {
+                if (InteractItem.rectangle.Intersects(input.MouseTip))
+                {
+                    InteractItem.DoAction();
+                    return true;
+                }
+            }
+            return false;
+        }
+
 
         /// <summary>
         /// 1x1 white pixel for drawing rectangles
@@ -43,7 +73,7 @@ namespace yumeTakusan.Interaction
         public void AddBelowAll(InteractRectangle interactRectangle)
         {
             interactItems.Add(interactRectangle);
-            
+
         }
 
 
@@ -90,7 +120,7 @@ namespace yumeTakusan.Interaction
             int iterator = 0;
             foreach (var interactItem in interactItems)
             {
-                spriteBatch.Draw(pixel, interactItem.rectangle,null, drawColors[iterator % drawColors.Length],0f,Vector2.Zero,SpriteEffects.None,.0001f*iterator);
+                spriteBatch.Draw(pixel, interactItem.rectangle, null, drawColors[iterator % drawColors.Length], 0f, Vector2.Zero, SpriteEffects.None, .0001f * iterator);
                 iterator++;
             }
             spriteBatch.End();

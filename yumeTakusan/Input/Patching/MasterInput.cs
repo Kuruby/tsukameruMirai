@@ -33,11 +33,12 @@ namespace yumeTakusan.Input.Patching
         /// </summary>
         /// <param name="Events">Events to add the handler for</param>
         /// <param name="handler">Handler to add for all the events</param>
-        public void AddEventListeners(Event[] Events, PassThroughHandler handler)
+        public void AddEventListeners(Event[] Events, PassThroughHandler handler, bool first = false)
         {
             foreach (Event e in Events)
             {
-                AddEventListener(e, handler);
+                //add the event listener at index 0 if inserted first or last if not
+                AddEventListener(e, handler, first ? 0 : -1);
             }
         }
 
@@ -145,6 +146,10 @@ namespace yumeTakusan.Input.Patching
             //update the state of devices
             keyboardState.Present = Keyboard.GetState();
             mouseState.Present = Mouse.GetState();
+
+            //update mouse position
+            MousePosition = new Vector2(mouseState.Present.X, mouseState.Present.Y);
+            MouseTip = new Rectangle(mouseState.Present.X, mouseState.Present.Y, 1, 1);
 
             //Update all gamepads (only 4 xinput ones usable)
             for (int i = 0; i < MaxXInputGamepads; i++)

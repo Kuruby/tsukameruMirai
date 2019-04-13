@@ -7,6 +7,9 @@ using Microsoft.Xna.Framework.Input;
 
 namespace yumeTakusan.Input.Patching
 {
+    /// <summary>
+    /// Timing values for events (bitfields yes)
+    /// </summary>
     public enum EventTiming
     {
         Off = 0b00,
@@ -95,22 +98,19 @@ namespace yumeTakusan.Input.Patching
         /// </summary>
         EventTiming timing;
 
+
+        /// <summary>
+        /// Whether the event is currently triggered
+        /// </summary>
+        /// <param name="input">the input to use to check</param>
+        /// <returns></returns>
         public bool isTriggered(MasterInput input)
         {
             if ((int)key != -1)
             {
                 //key path
-
-                //binary logic
-                int bleh = 0;
-                bleh |= input.keyboardState.Past.IsKeyDown(key) ? 0b10 : 0;
-                bleh |= input.keyboardState.Present.IsKeyDown(key) ? 0b01 : 0;
-                int blurgh = bleh ^ (int)timing;
-                if (blurgh == 0)
-                {
-                    return true;
-                }
-                return false;
+                return matchesTiming(input.keyboardState.Past.IsKeyDown(key),
+                    input.keyboardState.Present.IsKeyDown(key));
             }
 
             if (gamepadNumber != -1)
@@ -118,21 +118,14 @@ namespace yumeTakusan.Input.Patching
                 //gamepad path
 
                 //don't deal with disconnected gamepads
-                if (!input.gamePadStates[gamepadNumber].Present.IsConnected || !input.gamePadStates[gamepadNumber].Past.IsConnected)
+                if (!input.gamePadStates[gamepadNumber].Present.IsConnected
+                    || !input.gamePadStates[gamepadNumber].Past.IsConnected)
                 {
                     return false;
                 }
 
-                //binary logic
-                int bleh = 0;
-                bleh |= input.gamePadStates[gamepadNumber].Past.IsButtonDown(button) ? 0b10 : 0;
-                bleh |= input.gamePadStates[gamepadNumber].Present.IsButtonDown(button) ? 0b01 : 0;
-                int blurgh = bleh ^ (int)timing;
-                if (blurgh == 0)
-                {
-                    return true;
-                }
-                return false;
+                return matchesTiming(input.gamePadStates[gamepadNumber].Past.IsButtonDown(button),
+                    input.gamePadStates[gamepadNumber].Present.IsButtonDown(button));
             }
 
             if (interceptsMice)
@@ -145,5 +138,65 @@ namespace yumeTakusan.Input.Patching
             //so false, duh!
             return false;
         }
+
+        /// <summary>
+        /// Returns whether the past and present states match the timing values in the object
+        /// </summary>
+        /// <param name="past">past value</param>
+        /// <param name="present">present value</param>
+        /// <returns>whether the past and present states match the timing</returns>
+        private bool matchesTiming(bool past, bool present)
+            => matchesTiming(past, present, timing);
+
+
+        /// <summary>
+        /// Returns whether the past and present states match the timing value
+        /// </summary>
+        /// <param name="past">past value</param>
+        /// <param name="present">present value</param>
+        /// <param name="timing">which timing to trigger on</param>
+        /// <returns>whether the past and present states match the timing</returns>
+        private static bool matchesTiming(bool past, bool present, EventTiming timing)
+        {
+            //binary logic
+            int flagsFromInput = 0;
+            //set bit falgs
+            flagsFromInput |= past ? 0b10 : 0;
+            flagsFromInput |= present ? 0b01 : 0;
+            //xor with bit flags in the timing
+            int result = flagsFromInput ^ (int)timing;
+            //0 means they're identical
+            return result == 0;
+        }
+
+        /// <summary>
+        /// Returns if the left button matches the given timing.
+        /// </summary>
+        /// <param name="input">Input to check against</param>
+        /// <param name="timing">Timing to compare button presses to</param>
+        /// <returns>Whether the left button matches the timing</returns>
+        public static bool IsLeftMouseTriggered(MasterInput input, EventTiming timing = EventTiming.Press)
+            => matchesTiming(input.mouseState.Past.LeftButton == ButtonState.Pressed,
+                input.mouseState.Present.LeftButton == ButtonState.Pressed, timing);
+
+        /// <summary>
+        /// Returns if the middle button matches the given timing.
+        /// </summary>
+        /// <param name="input">Input to check against</param>
+        /// <param name="timing">Timing to compare button presses to</param>
+        /// <returns>Whether the middle button matches the timing</returns>
+        public static bool IsMiddleMouseTriggered(MasterInput input, EventTiming timing = EventTiming.Press)
+            => matchesTiming(input.mouseState.Past.MiddleButton == ButtonState.Pressed,
+                input.mouseState.Present.MiddleButton == ButtonState.Pressed, timing);
+
+        /// <summary>
+        /// Returns if the right button matches the given timing.
+        /// </summary>
+        /// <param name="input">Input to check against</param>
+        /// <param name="timing">Timing to compare button presses to</param>
+        /// <returns>Whether the right button matches the timing</returns>
+        public static bool IsRightMouseTriggered(MasterInput input, EventTiming timing = EventTiming.Press)
+            => matchesTiming(input.mouseState.Past.RightButton == ButtonState.Pressed,
+                input.mouseState.Present.RightButton == ButtonState.Pressed, timing);
     }
 }

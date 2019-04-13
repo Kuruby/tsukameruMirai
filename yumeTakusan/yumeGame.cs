@@ -115,9 +115,9 @@ namespace yumeTakusan
             ElementNode.pixel = pixel;
             RootNode.pixel = pixel;
             p = new Player((Texture2D)content.GetContent<Texture2D>("char"), Rectangle.Empty,masterInput);
-            interactThingy = new InteractThingy((Texture2D)content.GetContent<Texture2D>("pixel"));
-            interactThingy.AddBelowAll(new InteractRectangle(50, 60, 70, 80));
-            interactThingy.AddAboveAll(new InteractRectangle(70, 80, 30, 40));
+            interactThingy = new InteractThingy((Texture2D)content.GetContent<Texture2D>("pixel"),masterInput);
+            interactThingy.AddBelowAll(new InteractRectangle(50, 60, 70, 80,()=> { Console.WriteLine("shita"); }));
+            interactThingy.AddAboveAll(new InteractRectangle(70, 80, 30, 40, () => { Console.WriteLine("ue"); }));
         }
 
         /// <summary>
