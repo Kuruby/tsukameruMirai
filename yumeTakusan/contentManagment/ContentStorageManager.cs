@@ -35,33 +35,44 @@ namespace yumeTakusan.ContentManagment
         protected ContentManager content;
 
         /// <summary>
-        /// String access to all image content
+        /// Stores all content
         /// </summary>
-        protected Dictionary<string, Texture2D> imageStore = new Dictionary<string, Texture2D>();
+        protected Dictionary<string, Content> contentStore = new Dictionary<string, Content>();
+
+
 
         /// <summary>
-        /// String access to all the UI windows
+        /// Returns the content identified by the string
         /// </summary>
-        protected Dictionary<string, RootNode> uiStore = new Dictionary<string, RootNode>();
-
-        /// <summary>
-        /// Returns the content identified by the string and type.
-        /// </summary>
-        /// <typeparam name="T">Type of content to be returned</typeparam>
         /// <param name="identifier">The name of the content requested</param>
         /// <returns>Requested content</returns>
-        public object GetContent<T>(string identifier)
+        public object GetContent(string identifier)
         {
-            string type = typeof(T).ToString();
-            switch (type)
-            {
-                case "Microsoft.Xna.Framework.Graphics.Texture2D":
-                    return imageStore[identifier];
-                case "yumeTakusan.yumeUI.RootNode":
-                    return uiStore[identifier];
-                default:
-                    throw new NotImplementedException($"theres no such thing as a {type}");
-            }
+            return contentStore[identifier]._Content;
+        }
+
+        /// <summary>
+        /// Gets all content that has a certain tag
+        /// </summary>
+        /// <typeparam name="T">Type of the content that has it</typeparam>
+        /// <param name="tag">The tag requested</param>
+        /// <returns>Requested content</returns>
+        public object[] GetTaggedContent<T>(string tag)
+        {
+            var TaggedContent = from keyValuePair in contentStore
+                                where keyValuePair.Value.Tags.Contains(tag)
+                                where keyValuePair.Value.T == typeof(T)
+                                select keyValuePair.Value._Content;
+            return TaggedContent.ToArray();
+        }
+
+        public Content[] GetTaggedContentWithMetadata<T>(string tag)
+        {
+            var TaggedContent = from keyValuePair in contentStore
+                                where keyValuePair.Value.Tags.Contains(tag)
+                                where keyValuePair.Value.T == typeof(T)
+                                select keyValuePair.Value;
+            return TaggedContent.ToArray();
         }
 
         /// <summary>
@@ -74,13 +85,13 @@ namespace yumeTakusan.ContentManagment
         /// loads a texture2d from a descriptor
         /// </summary>
         /// <param name="descriptor">Content to load</param>
-        protected abstract void getXnbContentFromDescriptor(Descriptor descriptor);
+        protected abstract Content getXnbContentFromDescriptor(Descriptor descriptor);
 
         /// <summary>
         /// Loads XML content from a descriptor
         /// </summary>
         /// <param name="descriptor">Content to load</param>
-        protected abstract void getXmlContentFromDescriptor(Descriptor descriptor);
+        protected abstract Content getXmlContentFromDescriptor(Descriptor descriptor);
 
         /// <summary>
         /// Loads all content from descriptors
@@ -105,10 +116,10 @@ namespace yumeTakusan.ContentManagment
             switch (descriptor.Datatype)
             {
                 case "xml"://Mostly UI: templated, lang data is set on ui creation
-                    getXmlContentFromDescriptor(descriptor);
+                    contentStore.Add(descriptor.Identifier, getXmlContentFromDescriptor(descriptor));
                     break;
                 case "xnb"://Various types wrapped in Monogame/XNA's content wrapper
-                    getXnbContentFromDescriptor(descriptor);
+                    contentStore.Add(descriptor.Identifier, getXnbContentFromDescriptor(descriptor));
                     break;
                 case "json":
                     throw new NotImplementedException("json support not yet added");

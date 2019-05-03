@@ -30,11 +30,16 @@ namespace yumeTakusan.ContentManagment
         /// What the content is called
         /// </summary>
         public string Identifier;
-        
+
         /// <summary>
         /// The locale that the content has (if any)
         /// </summary>
         public string Locale;
+
+        /// <summary>
+        /// Various tags for the function of the content
+        /// </summary>
+        public string[] Tags;
 
         /// <summary>
         /// Creates a content descriptor
@@ -44,13 +49,14 @@ namespace yumeTakusan.ContentManagment
         /// <param name="Path">Relative location "on disk" of content</param>
         /// <param name="Identifier">What the content is called</param>
         /// <param name="Locale">Locale (if any) of the content</param>
-        public Descriptor(string Datatype, string Type, string Path, string Identifier, string Locale = null)
+        public Descriptor(string Datatype, string Type, string Path, string Identifier, string Locale = null, string[] Tags = null)
         {
             this.Datatype = Datatype;
             this.Type = Type;
             this.Path = Path;
             this.Identifier = Identifier;
             this.Locale = Locale ?? "neutral";
+            this.Tags = Tags ?? new string[0];
         }
     }
 

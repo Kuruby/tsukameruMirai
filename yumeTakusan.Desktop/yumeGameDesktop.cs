@@ -14,7 +14,7 @@ namespace yumeTakusan.Desktop
         /// </summary>
         public YumeGameDesktop() : base()
         {
-            content = new DesktopContentStorageManager(Content);
+            ContentStore = new DesktopContentStorageManager(Content);
         }
     }
 }

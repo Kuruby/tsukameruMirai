@@ -32,7 +32,7 @@ namespace yumeTakusan
         /// <summary>
         /// Content storage manager for the game
         /// </summary>
-        protected ContentStorageManager content;
+        protected ContentStorageManager ContentStore;
 
         protected MasterInput masterInput = new MasterInput();
 
@@ -43,6 +43,7 @@ namespace yumeTakusan
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            Window.AllowUserResizing = true;
         }
 
         /// <summary>
@@ -91,7 +92,7 @@ namespace yumeTakusan
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            content.LoadAllContent();
+            ContentStore.LoadAllContent();
             InitializeAfterContentLoad();
         }
 
@@ -105,19 +106,20 @@ namespace yumeTakusan
         /// </summary>
         InteractThingy interactThingy;
 
+        protected List<Particle> Particles = new List<Particle>();
+
         /// <summary>
         /// performs initialization once the content is loaded
         /// </summary>
         protected void InitializeAfterContentLoad()
         {
-            testUI = (RootNode)content.GetContent<RootNode>("ui");
-            Texture2D pixel = (Texture2D)content.GetContent<Texture2D>("pixel");
+            testUI = (RootNode)ContentStore.GetContent("ui");
+            Texture2D pixel = (Texture2D)ContentStore.GetContent("pixel");
             ElementNode.pixel = pixel;
             RootNode.pixel = pixel;
-            p = new Player((Texture2D)content.GetContent<Texture2D>("char"), Rectangle.Empty,masterInput);
-            interactThingy = new InteractThingy((Texture2D)content.GetContent<Texture2D>("pixel"),masterInput);
-            interactThingy.AddBelowAll(new InteractRectangle(50, 60, 70, 80,()=> { Console.WriteLine("shita"); }));
-            interactThingy.AddAboveAll(new InteractRectangle(70, 80, 30, 40, () => { Console.WriteLine("ue"); }));
+            Particle.AfterContentLoadInit(ContentStore);
+            p = new Player((Texture2D)ContentStore.GetContent("char"), Rectangle.Empty, masterInput);
+            interactThingy = new InteractThingy((Texture2D)ContentStore.GetContent("pixel"), masterInput);
         }
 
         /// <summary>
@@ -131,10 +133,18 @@ namespace yumeTakusan
         /// <param name="gameTime">Timing values</param>
         protected override void Update(GameTime gameTime)
         {
-            masterInput.Update(gameTime);
-            if(IsActive || false /*should be like Settings.InactivePlay*/)
-            {
 
+            if (IsActive || false /*should be like Settings.InactivePlay*/)
+            {
+                masterInput.Update(gameTime, true);
+
+                Particle.UpdateAndCheckDispose(Particles, gameTime);
+
+            }
+            else
+            {
+                masterInput.Update(gameTime, false);
+                //do whatever necessary to STOP stuff, including time!
             }
             p.Update(gameTime);
             base.Update(gameTime);
@@ -147,11 +157,14 @@ namespace yumeTakusan
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.MediumAquamarine);
-            testUI.Draw(gameTime, spriteBatch);
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp);
-            p.Draw(spriteBatch, new Camera(CameraViewType.Isometric), gameTime, 0f);
+            p.Draw(spriteBatch, camera, gameTime, 0f);
+            foreach (Particle particle in Particles)
+            {
+                particle.Draw(spriteBatch, camera, gameTime, .1f);
+            }
             spriteBatch.End();
-            interactThingy.Draw(spriteBatch);
+
             base.Draw(gameTime);
         }
     }

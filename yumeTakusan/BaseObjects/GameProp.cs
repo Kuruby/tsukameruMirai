@@ -17,7 +17,7 @@ namespace yumeTakusan.BaseObjects
         /// Constructor for a game prop
         /// </summary>
         /// <param name="Location">Where the prop is.</param>
-        public GameProp(Vector2 Location = default(Vector2))
+        public GameProp(Vector2 Location = default)
         {
             location = Location;
         }

@@ -52,35 +52,32 @@ namespace yumeTakusan.Android
         /// Returns the XML content from a descriptor
         /// </summary>
         /// <param name="descriptor">Descriptor to get content from</param>
-        protected override void getXmlContentFromDescriptor(Descriptor descriptor)
+        protected override Content getXmlContentFromDescriptor(Descriptor descriptor)
         {
             if (descriptor.Datatype != "xml")
                 throw new InvalidOperationException("bad datatype");
 
-            Type type = typeof(object);
+            Type type = typeof(void);
             switch (descriptor.Type)
             {
                 case "ui":
                     type = typeof(RootNode);
                     break;
+                default:
+                    throw new NotImplementedException($"Theres no such thing as a {descriptor.Type}");
             }
 
             XmlSerializer xmlSerializer = new XmlSerializer(type);
             object data = xmlSerializer.Deserialize(assetManager.Open("Content" + Path.DirectorySeparatorChar + descriptor.Path));
 
-            switch (descriptor.Type)
-            {
-                case "ui":
-                    uiStore.Add(descriptor.Identifier, (RootNode)data);
-                    break;
-            }
+            return new Content(type, data, descriptor.Identifier, descriptor.Tags);
         }
 
         /// <summary>
         /// Returns the XNB content from a descriptor
         /// </summary>
         /// <param name="descriptor">Descriptor to get content from</param>
-        protected override void getXnbContentFromDescriptor(Descriptor descriptor)
+        protected override Content getXnbContentFromDescriptor(Descriptor descriptor)
         {
             if (descriptor.Datatype != "xnb")
                 throw new InvalidOperationException("bad datatype");
@@ -90,14 +87,19 @@ namespace yumeTakusan.Android
             if (path.EndsWith(".xnb"))
                 path = path.Substring(0, path.Length - 4);
 
+            Type type = typeof(void);
+            object data = null;
+
             switch (descriptor.Type)
             {
                 case "tex2d":
-                    Texture2D texture = content.Load<Texture2D>(path);
-                    //store
-                    imageStore.Add(descriptor.Identifier, texture);
+                    type = typeof(Texture2D);
+                    data = content.Load<Texture2D>(path);
                     break;
+                default:
+                    throw new NotImplementedException($"Theres no such thing as a {descriptor.Type}");
             }
+            return new Content(type, data, descriptor.Identifier, descriptor.Tags);
         }
     }
 }

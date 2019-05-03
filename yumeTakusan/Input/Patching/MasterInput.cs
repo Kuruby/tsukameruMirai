@@ -10,7 +10,7 @@ using yumeTakusan.Events;
 
 namespace yumeTakusan.Input.Patching
 {
-    public class MasterInput : IUpdatable
+    public class MasterInput
     {
         /// <summary>
         /// Constant: Maximum number of gamepads allowed by XInput
@@ -141,7 +141,7 @@ namespace yumeTakusan.Input.Patching
         /// Updates the handlers
         /// </summary>
         /// <param name="gameTime">Timing values</param>
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, bool checkEvents = true)
         {
             //update the state of devices
             keyboardState.Present = Keyboard.GetState();
@@ -157,14 +157,17 @@ namespace yumeTakusan.Input.Patching
                 gamePadStates[i].Present = GamePad.GetState(i);
             }
 
-            //TODO: check events and pass them through to the listeners
-            foreach (Event Event in EventListeners.Keys)
+            if (checkEvents)
             {
-                //change true to checking the event
-                //also, make the event type...
-                if (Event.isTriggered(this))
+                //TODO: check events and pass them through to the listeners
+                foreach (Event Event in EventListeners.Keys)
                 {
-                    eventTriggerAndFilter(Event);
+                    //change true to checking the event
+                    //also, make the event type...
+                    if (Event.isTriggered(this))
+                    {
+                        eventTriggerAndFilter(Event);
+                    }
                 }
             }
         }
