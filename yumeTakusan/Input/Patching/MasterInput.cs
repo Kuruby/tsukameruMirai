@@ -95,7 +95,7 @@ namespace yumeTakusan.Input.Patching
         /// <summary>
         /// Event listeners (and also all the events)
         /// </summary>
-        Dictionary<Event, List<PassThroughHandler>> EventListeners = new Dictionary<Event, List<PassThroughHandler>>();
+        readonly Dictionary<Event, List<PassThroughHandler>> EventListeners = new Dictionary<Event, List<PassThroughHandler>>();
 
         /// <summary>
         /// The location where the mouse tip is. (Rectangle)
@@ -141,7 +141,7 @@ namespace yumeTakusan.Input.Patching
         /// Updates the handlers
         /// </summary>
         /// <param name="gameTime">Timing values</param>
-        public void Update(GameTime gameTime, bool checkEvents = true)
+        public void Update( bool checkEvents = true)
         {
             //update the state of devices
             keyboardState.Present = Keyboard.GetState();

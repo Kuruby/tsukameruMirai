@@ -59,12 +59,7 @@ namespace yumeTakusan
         /// <summary>
         /// Zero-indexed window bounds
         /// </summary>
-        protected Rectangle windowBounds;
-
-        /// <summary>
-        /// Zero-indexed window bounds
-        /// </summary>
-        Rectangle WindowBounds => windowBounds;
+        public Rectangle WindowBounds { get; protected set; }
 
         /// <summary>
         /// Update the window rectangle
@@ -73,7 +68,7 @@ namespace yumeTakusan
         /// <param name="e">arguments</param>
         void UpdateWindowRectangle(object sender, EventArgs e)
         {
-            windowBounds = new Rectangle(0, 0, Window.ClientBounds.Width, Window.ClientBounds.Height);
+            WindowBounds = new Rectangle(0, 0, Window.ClientBounds.Width, Window.ClientBounds.Height);
         }
 
         /// <summary>
@@ -136,14 +131,14 @@ namespace yumeTakusan
 
             if (IsActive || false /*should be like Settings.InactivePlay*/)
             {
-                masterInput.Update(gameTime, true);
+                masterInput.Update(true);
 
                 Particle.UpdateAndCheckDispose(Particles, gameTime);
 
             }
             else
             {
-                masterInput.Update(gameTime, false);
+                masterInput.Update(false);
                 //do whatever necessary to STOP stuff, including time!
             }
             p.Update(gameTime);
@@ -157,6 +152,8 @@ namespace yumeTakusan
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.MediumAquamarine);
+            testUI.Draw(gameTime, spriteBatch);
+            interactThingy.Draw(spriteBatch);
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp);
             p.Draw(spriteBatch, camera, gameTime, 0f);
             foreach (Particle particle in Particles)

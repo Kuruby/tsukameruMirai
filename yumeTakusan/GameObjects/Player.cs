@@ -28,7 +28,7 @@ namespace yumeTakusan.GameObjects
         /// <param name="Visible">Whether the object can be seen</param>
         /// <param name="Location">Where the object is</param>
         public Player(Texture2D Texture, Rectangle Hitbox, MasterInput input = null, Color? Colour = null, SpriteEffects Effects = SpriteEffects.None,
-            bool Visible = true, Vector2 Location = default(Vector2)) : base(Texture, Hitbox, Colour, Effects, Visible, Location)
+            bool Visible = true, Vector2 Location = default) : base(Texture, Hitbox, Colour, Effects, Visible, Location)
         {
             drawComponent = new DrawComponent(this);
             physicsComponent = new PhysicsComponent(this);
@@ -39,15 +39,15 @@ namespace yumeTakusan.GameObjects
         /// <summary>
         /// Component to draw the player
         /// </summary>
-        DrawComponent drawComponent;
+        readonly DrawComponent drawComponent;
         /// <summary>
         /// Component to perform physics calculations on the player
         /// </summary>
-        PhysicsComponent physicsComponent;
+        readonly PhysicsComponent physicsComponent;
         /// <summary>
         /// Component controlling the player
         /// </summary>
-        ControlComponent controlComponent;
+        readonly ControlComponent controlComponent;
 
         /// <summary>
         /// updates the player and position thereof
