@@ -35,7 +35,7 @@ namespace yumeTakusan.Components.Controllers
 
             Event e = (Event)(param);
 
-            if((int)e.key==-1)
+            if ((int)e.key == -1)
             {
                 return false;
             }
@@ -73,13 +73,13 @@ namespace yumeTakusan.Components.Controllers
         /// <summary>
         /// Empty constructor: controls no object
         /// </summary>
-        public DesktopInputController(MasterInput input) : this(null,input) { }
+        public DesktopInputController(MasterInput input) : this(null, input) { }
 
         /// <summary>
         /// Default Constructor, creates a controller controlling the specified object
         /// </summary>
         /// <param name="controlledObject">Object to be controlled</param>
-        public DesktopInputController(IMovable controlledObject,MasterInput input) : base(controlledObject)
+        public DesktopInputController(IMovable controlledObject, MasterInput input) : base(controlledObject)
         {
             //register directional keys
             Up = Keys.W;
@@ -88,11 +88,11 @@ namespace yumeTakusan.Components.Controllers
             Right = Keys.D;
 
             //creates events for directional keys
-            Event[] events = (from key in new Keys[]{ Up,Down,Left,Right}
-                                select new Event(key))
+            Event[] events = (from key in new Keys[] { Up, Down, Left, Right }
+                              select new Event(key))
                                 .Concat(
                                     from key in new Keys[] { Up, Down, Left, Right }
-                                        select new Event(key, EventTiming.During)
+                                    select new Event(key, EventTiming.During)
                                 )
                                 .ToArray();
             //add event listeners for those

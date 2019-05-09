@@ -42,7 +42,7 @@ namespace yumeTakusan.Components
         /// <summary>
         /// The object that is controller
         /// </summary>
-        protected IMovable controlled;
+        public IMovable controlled { protected get; set; }
 
         /// <summary>
         /// Update method

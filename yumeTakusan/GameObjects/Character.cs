@@ -9,17 +9,18 @@ using yumeTakusan.BaseObjects;
 using yumeTakusan.Components;
 using yumeTakusan.YumeCamera;
 using yumeTakusan.Components.Controllers;
-using yumeTakusan.Input.Patching;
+using yumeTakusan.Interfaces;
 
 namespace yumeTakusan.GameObjects
 {
     /// <summary>
-    /// Represents a game player
+    /// Represents a character of some sort in the game (Player, NPC, enemy.)
     /// </summary>
-    class Player : CollideableGameObject
+    public class Character : CollideableGameObject, IDisposalFlag, IKillable
     {
+
         /// <summary>
-        /// Creates a player
+        /// Creates a character
         /// </summary>
         /// <param name="Texture">Texture to be displayed for the object</param>
         /// <param name="Hitbox">The hitbox of the object</param>
@@ -27,30 +28,31 @@ namespace yumeTakusan.GameObjects
         /// <param name="Effects">How the object is flipped</param>
         /// <param name="Visible">Whether the object can be seen</param>
         /// <param name="Location">Where the object is</param>
-        public Player(Texture2D Texture, Rectangle Hitbox, MasterInput input = null, Color? Colour = null, SpriteEffects Effects = SpriteEffects.None,
+        public Character(Texture2D Texture, Rectangle Hitbox, ControlComponent control, Color? Colour = null, SpriteEffects Effects = SpriteEffects.None,
             bool Visible = true, Vector2 Location = default) : base(Texture, Hitbox, Colour, Effects, Visible, Location)
         {
             drawComponent = new DrawComponent(this);
             physicsComponent = new PhysicsComponent(this);
-            if (input != null)
-                controlComponent = new DesktopInputController(this, input);
+            controlComponent = control;
+            controlComponent.controlled = this;
+
         }
 
         /// <summary>
-        /// Component to draw the player
+        /// Component to draw the character
         /// </summary>
         readonly DrawComponent drawComponent;
         /// <summary>
-        /// Component to perform physics calculations on the player
+        /// Component to perform physics calculations on the character
         /// </summary>
         readonly PhysicsComponent physicsComponent;
         /// <summary>
-        /// Component controlling the player
+        /// Component controlling movement and ai for the character
         /// </summary>
         readonly ControlComponent controlComponent;
 
         /// <summary>
-        /// updates the player and position thereof
+        /// updates the character
         /// </summary>
         /// <param name="gameTime">Timing values</param>
         public override void Update(GameTime gameTime)
@@ -60,7 +62,20 @@ namespace yumeTakusan.GameObjects
         }
 
         /// <summary>
-        /// Draws the player
+        /// Happens when the character dies
+        /// </summary>
+        public void Die()
+        {
+            disposed = true;
+        }
+
+        /// <summary>
+        /// Whether or not the character is to be disposed
+        /// </summary>
+        public bool disposed { get; protected set; }
+
+        /// <summary>
+        /// Draws the character
         /// </summary>
         /// <param name="spriteBatch">The spritebatch to be used for drawing.</param>
         /// <param name="camera">The camera that represents how the object and world is viewed.</param>

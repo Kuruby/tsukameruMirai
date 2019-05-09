@@ -16,15 +16,29 @@ namespace yumeTakusan.GameObjects
     /// <summary>
     /// Particles are small, temporary in-game flashes of light often used to add flair to somethinga
     /// </summary>
-    public class Particle : GameProp, Interfaces.IDrawable
+    public class Particle : GameProp, Interfaces.IDrawable, IDisposalFlag
     {
+        /// <summary>
+        /// Creates a particle at a specific location
+        /// </summary>
+        /// <param name="Location">Where to create the particle</param>
+        /// <param name="TimeToLive">how long (in ms) the particle is to exist</param>
         public Particle(Vector2 Location = default, int TimeToLive = 500) : base(Location)
         {
             timeToLive = TimeToLive;
             drawComponent = new DrawComponent(this);
         }
 
-        static Random rand = new Random();
+        /// <summary>
+        /// Random for generation of particles within an area
+        /// </summary>
+        static readonly Random rand = new Random();
+
+        /// <summary>
+        /// Generates a particle at a random spot within a rectangle
+        /// </summary>
+        /// <param name="WithinRectangle">rectangle within which to generate particle</param>
+        /// <param name="TimeToLive">how long (in ms) the particle is to exist</param>
         public Particle(Rectangle WithinRectangle, int TimeToLive = 500)
             : this(
                   new Vector2(rand.Next(WithinRectangle.Left, WithinRectangle.Right),
@@ -48,13 +62,13 @@ namespace yumeTakusan.GameObjects
         /// <summary>
         /// All particle textures
         /// </summary>
-        private static Dictionary<string, Texture2D> particleTextures = new Dictionary<string, Texture2D>();
+        private static readonly Dictionary<string, Texture2D> particleTextures = new Dictionary<string, Texture2D>();
 
 
         /// <summary>
         /// Performs drawing for the particle
         /// </summary>
-        DrawComponent drawComponent;
+        readonly DrawComponent drawComponent;
 
         /// <summary>
         /// Time for the particle to live, in milliseconds
@@ -64,17 +78,27 @@ namespace yumeTakusan.GameObjects
         /// <summary>
         /// Whether the particle is to be disposed
         /// </summary>
-        bool disposed = false;
+        public bool disposed { get; protected set; }
+
+        /// <summary>
+        /// The sprite effects to be applied (none by default)
+        /// </summary>
         public SpriteEffects Effects { get; set; } = SpriteEffects.None;
+        /// <summary>
+        /// The colour for the particle
+        /// </summary>
         public Color Color { get; set; } = Color.White;
 
+        /// <summary>
+        /// The texture for the particle
+        /// </summary>
         public Texture2D Texture => null;//No particle textures yet
 
         /// <summary>
         /// Particle update:
         /// (maybe motion?) and disposal check
         /// </summary>
-        /// <param name="gameTime"></param>
+        /// <param name="gameTime">Timing parameter</param>
         public override void Update(GameTime gameTime)
         {
             //eval ttl and dispose if it's less than or equal to 0
@@ -92,50 +116,16 @@ namespace yumeTakusan.GameObjects
             }
         }
 
+        /// <summary>
+        /// Draws the particle
+        /// </summary>
+        /// <param name="spriteBatch"></param>
+        /// <param name="camera"></param>
+        /// <param name="gameTime"></param>
+        /// <param name="layerDepth"></param>
         public void Draw(SpriteBatch spriteBatch, Camera camera, GameTime gameTime, float layerDepth)
         {
             drawComponent.Draw(spriteBatch, camera, gameTime, layerDepth);
-        }
-
-        public static void Update(List<Particle> Particles, GameTime gameTime)
-        {
-            foreach (Particle particle in Particles)
-            {
-                particle.Update(gameTime);
-            }
-        }
-
-        public static void CheckDispose(List<Particle> Particles)
-        {
-            List<Particle> DisposalList = new List<Particle>();
-            foreach (Particle particle in Particles)
-            {
-                if (particle.disposed)
-                {
-                    DisposalList.Add(particle);
-                }
-            }
-            foreach (Particle particle in DisposalList)
-            {
-                Particles.Remove(particle);
-            }
-        }
-
-        public static void UpdateAndCheckDispose(List<Particle> Particles, GameTime gameTime)
-        {
-            List<Particle> DisposalList = new List<Particle>();
-            foreach (Particle particle in Particles)
-            {
-                particle.Update(gameTime);
-                if (particle.disposed)
-                {
-                    DisposalList.Add(particle);
-                }
-            }
-            foreach (Particle particle in DisposalList)
-            {
-                Particles.Remove(particle);
-            }
         }
     }
 }

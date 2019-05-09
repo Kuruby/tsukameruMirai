@@ -12,6 +12,8 @@ using yumeTakusan.yumeUI;
 using yumeTakusan;
 using yumeTakusan.Interaction;
 using yumeTakusan.Input.Patching;
+using yumeTakusan.Components.Controllers;
+using yumeTakusan.Components;
 
 namespace yumeTakusan
 {
@@ -69,6 +71,7 @@ namespace yumeTakusan
         void UpdateWindowRectangle(object sender, EventArgs e)
         {
             WindowBounds = new Rectangle(0, 0, Window.ClientBounds.Width, Window.ClientBounds.Height);
+            RenderTargetManager.windowDimensions = WindowBounds;
         }
 
         /// <summary>
@@ -77,7 +80,9 @@ namespace yumeTakusan
         protected override void Initialize()
         {
             Window.ClientSizeChanged += UpdateWindowRectangle;
+            UpdateWindowRectangle(this, null);
             IsMouseVisible = true;
+            RenderTargetManager.Initialize(GraphicsDevice);
             base.Initialize();
         }
 
@@ -91,10 +96,11 @@ namespace yumeTakusan
             InitializeAfterContentLoad();
         }
 
+
         /// <summary>
-        /// player for testing
+        /// All Characters in the game currently
         /// </summary>
-        Player p;
+        protected List<Character> Characters = new List<Character>();
 
         /// <summary>
         /// Interactthingy for testing
@@ -102,6 +108,8 @@ namespace yumeTakusan
         InteractThingy interactThingy;
 
         protected List<Particle> Particles = new List<Particle>();
+
+
 
         /// <summary>
         /// performs initialization once the content is loaded
@@ -113,7 +121,7 @@ namespace yumeTakusan
             ElementNode.pixel = pixel;
             RootNode.pixel = pixel;
             Particle.AfterContentLoadInit(ContentStore);
-            p = new Player((Texture2D)ContentStore.GetContent("char"), Rectangle.Empty, masterInput);
+            Characters.Add(new Character((Texture2D)ContentStore.GetContent("char"), Rectangle.Empty, new DesktopInputController(masterInput)));
             interactThingy = new InteractThingy((Texture2D)ContentStore.GetContent("pixel"), masterInput);
         }
 
@@ -132,16 +140,14 @@ namespace yumeTakusan
             if (IsActive || false /*should be like Settings.InactivePlay*/)
             {
                 masterInput.Update(true);
-
-                Particle.UpdateAndCheckDispose(Particles, gameTime);
-
+                StaticDisposalComponent.UpdateAndCheckDispose(Particles, gameTime);
+                StaticDisposalComponent.UpdateAndCheckDispose(Characters, gameTime);
             }
             else
             {
                 masterInput.Update(false);
                 //do whatever necessary to STOP stuff, including time!
             }
-            p.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -152,10 +158,13 @@ namespace yumeTakusan
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.MediumAquamarine);
-            testUI.Draw(gameTime, spriteBatch);
+            testUI.Draw(spriteBatch);
             interactThingy.Draw(spriteBatch);
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp);
-            p.Draw(spriteBatch, camera, gameTime, 0f);
+            foreach (Character character in Characters)
+            {
+                character.Draw(spriteBatch, camera, gameTime, 0.1f);
+            }
             foreach (Particle particle in Particles)
             {
                 particle.Draw(spriteBatch, camera, gameTime, .1f);
