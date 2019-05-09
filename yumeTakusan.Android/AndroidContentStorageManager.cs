@@ -36,7 +36,7 @@ namespace yumeTakusan.Android
         /// <summary>
         /// Assetmanager for loading android content
         /// </summary>
-        AssetManager assetManager;
+        readonly AssetManager assetManager;
 
         /// <summary>
         /// Gets all descriptors in the android descriptors file
@@ -60,6 +60,7 @@ namespace yumeTakusan.Android
             Type type = typeof(void);
             switch (descriptor.Type)
             {
+                //deprecated
                 case "ui":
                     type = typeof(RootNode);
                     break;
@@ -71,6 +72,21 @@ namespace yumeTakusan.Android
             object data = xmlSerializer.Deserialize(assetManager.Open("Content" + Path.DirectorySeparatorChar + descriptor.Path));
 
             return new Content(type, data, descriptor.Identifier, descriptor.Tags);
+        }
+
+        /// <summary>
+        /// Gets XNB content from a descriptor
+        /// </summary>
+        /// <param name="descriptor">Descriptor to get content from</param>
+        protected override Content getXmlUIContentFromDescriptor(Descriptor descriptor)
+        {
+            if (descriptor.Datatype != "xmlui" || descriptor.Type != "ui")
+                throw new InvalidOperationException("bad datatype");
+            return new Content(typeof(RootNode),
+                RootNode.DeSerialize(
+                    new StreamReader(assetManager.Open("Content" + Path.DirectorySeparatorChar + descriptor.Path)).ReadToEnd()),
+                descriptor.Identifier,
+                descriptor.Tags);
         }
 
         /// <summary>
