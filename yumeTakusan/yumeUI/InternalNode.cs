@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace yumeTakusan.yumeUI
 {
@@ -11,5 +12,6 @@ namespace yumeTakusan.yumeUI
     /// </summary>
     public abstract class InternalNode
     {
+        abstract internal Texture2D Draw(SpriteBatch spriteBatch, Texture2D[] internalRenderedElements);
     }
 }

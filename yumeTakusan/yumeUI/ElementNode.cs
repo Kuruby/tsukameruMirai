@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace yumeTakusan.yumeUI
 {
@@ -36,7 +37,7 @@ namespace yumeTakusan.yumeUI
         /// The node that is internally this element
         /// </summary>
         [XmlElement()]
-        InternalNode internalNode;
+        readonly InternalNode internalNode;
 
         /// <summary>
         /// The type of node this is
@@ -76,6 +77,68 @@ namespace yumeTakusan.yumeUI
             {
                 style = style.FromString(value);
             }
+        }
+
+        public Texture2D Draw(SpriteBatch spriteBatch)
+        {
+            List<Texture2D> internalElementRenders = new List<Texture2D>();
+            //Generate textures from the contained nodes
+            foreach (ElementNode node in containedNodes)
+            {
+                Texture2D texture = node.Draw(spriteBatch);
+                if (texture != null)
+                {
+                    internalElementRenders.Add(texture);
+                }
+            }
+
+
+            if (internalNode == null)
+            {
+                int renderedHeight = 1;
+                int renderedWidth = 1;
+                //Estimate the final rendered size
+                if (internalElementRenders.Count != 0)
+                {
+                    renderedHeight = internalElementRenders.Sum(tex => tex.Bounds.Height) + style.InnerExtra;
+                    renderedWidth = internalElementRenders.Max(tex => tex.Bounds.Width) + style.InnerExtra;
+                }
+                else
+                {
+                    if (style.InnerExtra == 0)
+                    {
+                        return null;
+                    }
+                    renderedHeight = style.InnerExtra;
+                    renderedWidth = style.InnerExtra;
+                }
+                RenderTargetManager.createAndSetTarget(renderedWidth, renderedHeight);
+                //draw the textures directly from the contained nodes
+                spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp);
+                //Create the offsets
+                int leftOffset = 0;
+                int topOffset = 0;
+                int rightOffset = 0;
+                int bottomOffset = 0;
+                Rectangle offsetRectangle() => new Rectangle(leftOffset, topOffset, renderedWidth - rightOffset, renderedHeight - bottomOffset);
+                //Draw border
+                spriteBatch.Draw(pixel, offsetRectangle(), null, style.borderColor, 0f, Vector2.Zero, SpriteEffects.None, 1f);
+                leftOffset += style.border;
+                topOffset += style.border;
+                rightOffset += style.border;
+                bottomOffset += style.border;
+                //draw background
+                spriteBatch.Draw(pixel, offsetRectangle(), null, style.backgroundColor, 0f, Vector2.Zero, SpriteEffects.None, .999f);
+
+                spriteBatch.End();
+                return RenderTargetManager.PopRenderTarget();
+            }
+            else
+            {
+                //If there is a internal node have it draw the contained nodes
+                return internalNode.Draw(spriteBatch, new Texture2D[] { });
+            }
+
         }
     }
 }

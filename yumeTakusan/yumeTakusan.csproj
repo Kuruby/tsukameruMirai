@@ -55,14 +55,19 @@
     <Compile Include="BaseObjects\Zone.cs" />
     <Compile Include="Components\ControlComponent.cs" />
     <Compile Include="Components\Controllers\DesktopInputController.cs" />
+    <Compile Include="Components\StaticDisposalComponent.cs" />
     <Compile Include="ContentManagment\Content.cs" />
     <Compile Include="Events\Events.cs" />
     <Compile Include="GameObjects\Particle.cs" />
-    <Compile Include="GameObjects\Player.cs" />
+    <Compile Include="GameObjects\Character.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Input\Patching\Event.cs" />
     <Compile Include="Input\Patching\PastPresent.cs" />
     <Compile Include="Interaction\InteractRectangle.cs" />
     <Compile Include="Interaction\InteractThingy.cs" />
+    <Compile Include="Interfaces\IDisposalFlag.cs" />
+    <Compile Include="Interfaces\IKillable.cs" />
+    <Compile Include="RenderTargetManager.cs" />
     <Compile Include="YumeCamera\Camera.cs" />
     <Compile Include="YumeCamera\CameraViewType.cs" />
     <Compile Include="Components\AnimatedDrawComponent.cs" />
@@ -89,6 +94,8 @@
     <Compile Include="Input\Patching\MasterInput.cs" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="yumeUI\InternalNodes\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

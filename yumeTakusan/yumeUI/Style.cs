@@ -24,8 +24,8 @@ namespace yumeTakusan.yumeUI
         /// <param name="BorderColor">Color of the border</param>
         /// <param name="BackGroundColor">Color of the background</param>
         /// <param name="MainColor">Color for text, etc.</param>
-        public Style(int Padding = 0, int Border = 0, int Margin = 0, Positions Position = Positions._relative, Vector2 Location = default(Vector2), Color? BorderColor = default(Color?),
-            Color? BackGroundColor = default(Color?), Color? MainColor = default(Color?))
+        public Style(int Padding = 0, int Border = 0, int Margin = 0, Positions Position = Positions._relative, Vector2 Location = default,
+            Color? BorderColor = default, Color? BackGroundColor = default, Color? MainColor = default)
         {
             padding = Padding;
             border = Border;
@@ -77,20 +77,23 @@ namespace yumeTakusan.yumeUI
         /// </summary>
         public Color mainColor;
 
-        /// <summary>
+
+        public int InnerExtra => border * 2 + padding * 2;
+
+        /*/// <summary>
         /// If the element has a border
         /// </summary>
-        private bool hasBorder => border > 0;
+        private bool hasBorder => border > 0;*/
 
-        /// <summary>
+        /*/// <summary>
         /// if the element has padding
         /// </summary>
-        private bool hasPadding => padding > 0;
+        private bool hasPadding => padding > 0;*/
 
-        /// <summary>
+        /*/// <summary>
         /// if the element has a margin
         /// </summary>
-        private bool hasMargin => margin > 0;
+        private bool hasMargin => margin > 0;*/
 
         /// <summary>
         /// Creates a style from the string

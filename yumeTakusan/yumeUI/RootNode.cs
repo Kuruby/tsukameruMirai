@@ -26,7 +26,7 @@ namespace yumeTakusan.yumeUI
         /// Style for the root node
         /// </summary>
         [XmlAttribute("style")]
-        private Style style = new Style(5,0,0,Positions._static);
+        private Style style = new Style(5, 0, 0, Positions._static);
 
         /// <summary>
         /// String of style for XML encoding
@@ -86,9 +86,14 @@ namespace yumeTakusan.yumeUI
         /// </summary>
         /// <param name="gameTime">Timing values</param>
         /// <param name="spriteBatch">Sprite batch to use for drawing</param>
-        public void Draw(GameTime gameTime,SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            
+            Texture2D texture = node.Draw(spriteBatch);
+            if (texture == null)
+                return;
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp);
+            spriteBatch.Draw(texture, style.location, texture.Bounds, Color.White, 0f, Vector2.Zero, Vector2.One, SpriteEffects.None, 0f);
+            spriteBatch.End();
         }
     }
 }
