@@ -94,12 +94,6 @@ namespace yumeTakusan.ContentManagment
         protected abstract Content getXmlContentFromDescriptor(Descriptor descriptor);
 
         /// <summary>
-        /// Gets XNB content from a descriptor
-        /// </summary>
-        /// <param name="descriptor">Descriptor to get content from</param>
-        protected abstract Content getXmlUIContentFromDescriptor(Descriptor descriptor);
-
-        /// <summary>
         /// Loads all content from descriptors
         /// </summary>
         public void LoadAllContent()
@@ -121,11 +115,8 @@ namespace yumeTakusan.ContentManagment
           //First, check if if is xnb (monogame) or xml/json/other (text) content
             switch (descriptor.Datatype)
             {
-                case "xml":
+                case "xml"://Mostly UI: templated, lang data is set on ui creation
                     contentStore.Add(descriptor.Identifier, getXmlContentFromDescriptor(descriptor));
-                    break;
-                case "xmlui"://this is ui
-                    contentStore.Add(descriptor.Identifier, getXmlUIContentFromDescriptor(descriptor));
                     break;
                 case "xnb"://Various types wrapped in Monogame/XNA's content wrapper
                     contentStore.Add(descriptor.Identifier, getXnbContentFromDescriptor(descriptor));

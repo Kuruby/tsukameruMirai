@@ -70,7 +70,6 @@ namespace yumeTakusan.Desktop
             {
                 case "ui":
                     type = typeof(RootNode);
-                    //special UI serialization?
                     break;
                 default:
                     throw new NotImplementedException($"Theres no such thing as a {descriptor.Type}");
@@ -80,21 +79,6 @@ namespace yumeTakusan.Desktop
             object data = xmlSerializer.Deserialize(new FileStream("Content" + Path.DirectorySeparatorChar + descriptor.Path, FileMode.Open));
 
             return new Content(type, data, descriptor.Identifier, descriptor.Tags);
-        }
-
-        /// <summary>
-        /// Gets a UI from a descriptor
-        /// </summary>
-        /// <param name="descriptor">Descriptor for UI</param>
-        /// <returns>UI indicated by descriptor</returns>
-        protected override Content getXmlUIContentFromDescriptor(Descriptor descriptor)
-        {
-            if (descriptor.Datatype != "xmlui" || descriptor.Type != "ui")
-                throw new InvalidOperationException("bad datatype");
-            return new Content(typeof(RootNode),
-                RootNode.DeSerialize(File.ReadAllText("Content" + Path.DirectorySeparatorChar + descriptor.Path)),
-                descriptor.Identifier,
-                descriptor.Tags);
         }
 
         /// <summary>
