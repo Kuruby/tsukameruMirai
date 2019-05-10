@@ -16,7 +16,7 @@ namespace yumeTakusan.GameObjects
     /// <summary>
     /// Represents a character of some sort in the game (Player, NPC, enemy.)
     /// </summary>
-    public class Character : CollideableGameObject, IDisposalFlag, IKillable
+    public class Character : CollideableGameObject, IDisposalFlag
     {
 
         /// <summary>
