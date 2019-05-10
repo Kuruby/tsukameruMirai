@@ -60,13 +60,11 @@
     <Compile Include="Events\Events.cs" />
     <Compile Include="GameObjects\Particle.cs" />
     <Compile Include="GameObjects\Character.cs" />
-    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Input\Patching\Event.cs" />
     <Compile Include="Input\Patching\PastPresent.cs" />
     <Compile Include="Interaction\InteractRectangle.cs" />
     <Compile Include="Interaction\InteractThingy.cs" />
     <Compile Include="Interfaces\IDisposalFlag.cs" />
-    <Compile Include="Interfaces\IKillable.cs" />
     <Compile Include="RenderTargetManager.cs" />
     <Compile Include="YumeCamera\Camera.cs" />
     <Compile Include="YumeCamera\CameraViewType.cs" />
